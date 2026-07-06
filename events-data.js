@@ -79,7 +79,7 @@ window.EVENTS_DATA = [
     why: "This is one of the strongest 'I can't believe this is so close' experiences. Hiking to the summit and picnicking with 360-degree views of SF, Marin, Alcatraz, and the bridges builds instant awe and emotional attachment.",
     details: "Take the ferry from the historic SF Ferry Building, hike up Mt. Livermore, and share a summit picnic looking over the entire Bay Area.",
     link: "https://www.parks.ca.gov/?page_id=468",
-    image: "https://upload.wikimedia.org/wikipedia/commons/3/30/Angel_Island_%28California%29.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/7/72/Ayala_Cove_Ferry_Terminal_on_Angel_Island_in_the_San_Francisco_Bay.jpg",
     partner: "Angel Island Ferry Services, Golden Gate National Parks Conservancy"
   },
   {
@@ -107,7 +107,7 @@ window.EVENTS_DATA = [
     why: "Combines active teamwork, friendly competition, water, skyline views, and a premium social winery setting. Highly memorable and difficult to replicate in any other global startup hub.",
     details: "Charter small sailboats for a guided, friendly regatta around Treasure Island, then dock for a private tasting session at a local urban winery with views of the Bay Bridge.",
     link: "https://www.treasureislandwinery.com",
-    image: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Sailboat_in_San_Francisco_Bay.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Sailboat_on_San_Francisco_Bay_at_sunset.jpg/1280px-Sailboat_on_San_Francisco_Bay_at_sunset.jpg",
     partner: "SF Bay Sailing Charters, Treasure Island Wines"
   },
   {
@@ -149,7 +149,7 @@ window.EVENTS_DATA = [
     why: "Connects founders to the region's lineage. It links historical computing breakthroughs with the everyday culture of Silicon Valley, giving founders a tangible sense of the physical evolution of modern software.",
     details: "A private curated tour of the Computer History Museum in Mountain View, focusing on early computing, mainframes, and semiconductors, followed by lunch at Zareen's in Palo Alto.",
     link: "https://computerhistory.org",
-    image: "https://upload.wikimedia.org/wikipedia/commons/4/4e/Computer_history_museum.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Computer_History_Museum_exterior.jpg/1280px-Computer_History_Museum_exterior.jpg",
     partner: "Computer History Museum, Zareen's Restaurant"
   },
   {
@@ -163,7 +163,7 @@ window.EVENTS_DATA = [
     why: "Transforms standard professional networking into shared emotional memory. The combination of beach fog, roaring fire pits, s'mores, and local tacos fosters deep organic bonding.",
     details: "A beachside gathering at Ocean Beach fire pits with wood fires, blankets, and s'mores, preceded or followed by tacos and drinks in the Outer Sunset neighborhood.",
     link: "https://sfrecpark.org/1155/Ocean-Beach-Fire-Pits",
-    image: "https://upload.wikimedia.org/wikipedia/commons/0/02/Ocean_Beach%2C_San_Francisco.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Ocean_Beach_fire_pits_San_Francisco.jpg/1280px-Ocean_Beach_fire_pits_San_Francisco.jpg",
     partner: "Hook Fish Co, Underdogs Too, SF Rec & Parks"
   },
   {
@@ -177,7 +177,7 @@ window.EVENTS_DATA = [
     why: "Distinctively San Francisco, strange, beautiful, and highly meditative. Helps founders reflect on the larger scope of their lives outside of intense batch sprints.",
     details: "Gather at the Wave Organ acoustic stone sculpture at high tide to listen to the ocean interact with the sculpture, paired with sunset views of the Golden Gate and light drinks.",
     link: "https://www.exploratorium.edu/visit/wave-organ",
-    image: "https://upload.wikimedia.org/wikipedia/commons/b/b4/San_Francisco_Wave_Organ.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/f/f2/Wave_Organ%2C_San_Francisco_2023-02-19.jpg",
     partner: "Exploratorium staff"
   },
   {
@@ -191,7 +191,7 @@ window.EVENTS_DATA = [
     why: "Demonstrates the city's generous, civic-minded public culture. By layering YC-specific hospitality (a reserved picnic area and meeting point), founders feel integrated into the broader city.",
     details: "Gather for a catered premium picnic on the perimeter of the massive, free Hardly Strictly Bluegrass music festival in Golden Gate Park.",
     link: "https://www.hardlystrictlybluegrass.com",
-    image: "https://upload.wikimedia.org/wikipedia/commons/4/4d/Fantastic_Negrito_at_Hardly_Strictly_Bluegrass.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Laurie_Lewis_and_the_Right_Hands_Hardly_Strictly_Bluegrass_Golden_Gate_Park_San_Francisco_CA_October_2009.jpg/1280px-Laurie_Lewis_and_the_Right_Hands_Hardly_Strictly_Bluegrass_Golden_Gate_Park_San_Francisco_CA_October_2009.jpg",
     partner: "Hardly Strictly Festival Organizers, local caterers"
   },
   {
@@ -205,7 +205,7 @@ window.EVENTS_DATA = [
     why: "Presents San Francisco as restorative and physically grounding, counteracting startup intensity. Teaches founders that world-class nature walks exist right in their backyard.",
     details: "A guided, silent forest-bathing walk through the Presidio's towering eucalyptus and redwood groves, ending with a catered gourmet picnic on the Main Parade Ground.",
     link: "https://www.presidio.gov",
-    image: "https://upload.wikimedia.org/wikipedia/commons/e/e1/Spire_by_Andy_Goldsworthy_-_Presidio%2C_San_Francisco%2C_CA.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Presidio_forest_San_Francisco.jpg/1280px-Presidio_forest_San_Francisco.jpg",
     partner: "Presidio Trust, Association of Nature and Forest Therapy Guides"
   },
   {
@@ -219,7 +219,7 @@ window.EVENTS_DATA = [
     why: "Makes technical creativity feel playful and cooperative rather than work-like. Founders bond through active soldering and analog arcade gaming rather than pitching.",
     details: "A hands-on workshop in a SoMa maker space (e.g. soldering custom hardware badges) followed by free-play vintage pinball and arcade games at Musee Mecanique.",
     link: "https://museemecanique.com",
-    image: "https://upload.wikimedia.org/wikipedia/commons/1/1e/Mus%C3%A9e_M%C3%A9canique_003.JPG",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Makerspace_in_the_Making.jpg/1280px-Makerspace_in_the_Making.jpg",
     partner: "Noisebridge SoMa, Musee Mecanique"
   },
   {
@@ -233,7 +233,7 @@ window.EVENTS_DATA = [
     why: "Especially welcoming for international founders. The street market exploration combined with a family-style banquet meal forces cross-table interactions and highlights historic civic texture.",
     details: "Explore Chinatown's historic alleys and neon lights at sunset, visit the Golden Gate Fortune Cookie Factory, then gather for a multi-course banquet feast on lazy Susans.",
     link: "https://www.sfchinatown.com",
-    image: "https://live.staticflickr.com/65535/32930792147_df59434490_b.jpg",
+    image: "https://live.staticflickr.com/65535/thumb/2/28/Grant_Avenue_Chinatown_San_Francisco_night.jpg/1280px-Grant_Avenue_Chinatown_San_Francisco_night.jpg",
     partner: "Golden Gate Fortune Cookie Co, Far East Cafe / China Live"
   },
 
@@ -248,7 +248,7 @@ window.EVENTS_DATA = [
     why: "Reinforces the Bay Area as an unmatched research-to-company pipeline, showing founders how academic labs, deep tech, and funding networks overlap.",
     details: "Curated visits to university research labs and student makerspaces, meeting with academic builders working on frontier AI and robotics.",
     link: "https://www.stanford.edu",
-    image: "https://upload.wikimedia.org/wikipedia/commons/3/3b/Stanford_University_campus_from_above.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Stanford_University_Quad.jpg/1280px-Stanford_University_Quad.jpg"
   },
   {
     id: "soma-prototyping-feast",
@@ -260,7 +260,7 @@ window.EVENTS_DATA = [
     why: "Pairs the raw, hands-on physical act of building with a highly communal, shared-platter Yemeni dinner. Breaks down formal networking barriers.",
     details: "Tour an active hardware prototyping laboratory in SoMa, followed by a shared communal feast at a local Yemeni restaurant like Mandi House.",
     link: "https://www.mandihousesf.com",
-    image: "https://upload.wikimedia.org/wikipedia/commons/e/ea/Yemeni_food_-_Mandi_-_2011.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Yemeni_restaurant_San_Francisco.jpg/1280px-Yemeni_restaurant_San_Francisco.jpg",
     partner: "Soma Prototyping Labs, Mandi House"
   },
   {
@@ -273,7 +273,7 @@ window.EVENTS_DATA = [
     why: "Highlights the historic maritime and industrial roots of SF and how logistics, robotics, and creative reuse coexist in modern waterfront developments.",
     details: "Explore the shipyard redevelopment at Pier 70, then gather at a Dogpatch brewery with outdoor fire pits and local food trucks.",
     link: "https://www.pier70sf.com",
-    image: "https://upload.wikimedia.org/wikipedia/commons/c/cf/Building_101_side_view%2C_September_2018.JPG"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Pier_70_San_Francisco.jpg/1280px-Pier_70_San_Francisco.jpg"
   },
   {
     id: "exploratorium-adult-night",
@@ -285,7 +285,7 @@ window.EVENTS_DATA = [
     why: "Channels curiosity, science, and sensory play—three qualities that resonate strongly with tech founders. Provides a fun, non-standard night out.",
     details: "A group outing to the Exploratorium science museum on Thursday night, featuring drinks, DJ sets, and hands-on physics and perception exhibits.",
     link: "https://www.exploratorium.edu/visit/calendar/after-dark",
-    image: "https://upload.wikimedia.org/wikipedia/commons/e/e3/San_Francisco_Exploratorium.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Exploratorium_San_Francisco_exterior.jpg/1280px-Exploratorium_San_Francisco_exterior.jpg"
   },
   {
     id: "smart-people-salon",
@@ -307,7 +307,7 @@ window.EVENTS_DATA = [
     retention: "High",
     why: "Many people fall in love with SF due to unexpected interdisciplinary conversations. This format manufactures high-quality serendipity outside the tech bubble.",
     details: "Small-group dinners matching YC founders with local SF scientists, designers, writers, artists, chefs, and product creators based on shared interests.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/3/3f/Rooftop_dinner_restaurant_%2821112126732%29.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/San_Francisco_restaurant_interior.jpg/1280px-San_Francisco_restaurant_interior.jpg"
   },
   {
     id: "lands-end-hike",
@@ -319,7 +319,7 @@ window.EVENTS_DATA = [
     why: "Shows founders that rugged, world-class coastal nature, dramatic cliffs, and Golden Gate vistas exist directly inside city limits.",
     details: "Walk the coastal trail from Sutro Baths, winding through the cypress trees and ocean cliffs, ending with a panoramic sunset picnic.",
     link: "https://www.nps.gov/goga/planyourvisit/landsend.htm",
-    image: "https://upload.wikimedia.org/wikipedia/commons/9/92/Ruins_of_Sutro_Baths%2C_San_Francisco_%285814640116%29.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Sutro_Baths_ruins_San_Francisco.jpg/1280px-Sutro_Baths_ruins_San_Francisco.jpg"
   },
   {
     id: "marin-headlands-seafood",
@@ -330,7 +330,7 @@ window.EVENTS_DATA = [
     retention: "High",
     why: "Combines physical exercise, military history (exploring old batteries), panoramic skyline views, and high-quality local seafood.",
     details: "Cross the Golden Gate to hike the Marin Headlands ridges, exploring old coastal bunkers, followed by fresh oysters and seafood in Sausalito.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/f/fd/Golden_Gate_Bridge_from_Battery_Spencer.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Marin_Headlands_trail.jpg/1280px-Marin_Headlands_trail.jpg"
   },
   {
     id: "twin-peaks-sunrise",
@@ -342,7 +342,7 @@ window.EVENTS_DATA = [
     why: "Logistically simple but emotionally powerful. Seeing the entire grid of the city light up or fade at dawn/dusk creates shared quiet reflection.",
     details: "A quick group drive or climb to the summit of Twin Peaks for coffee, pastries, and a panoramic reflection circle overlooking the city.",
     link: "https://sfrecpark.org/1218/Twin-Peaks",
-    image: "https://upload.wikimedia.org/wikipedia/commons/1/11/Twin_Peaks-San_Francisco.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Twin_Peaks_view_San_Francisco.jpg/1280px-Twin_Peaks_view_San_Francisco.jpg"
   },
   {
     id: "mount-sutro-hidden-hike",
@@ -353,7 +353,7 @@ window.EVENTS_DATA = [
     retention: "Medium",
     why: "Gives founders the magical feeling of discovering a secret SF. A dense, misty eucalyptus forest hidden directly in the center of the city.",
     details: "Hike the historic interior trails of Mount Sutro, exploring the cloud forest and foggy peaks, feeling miles away from any urban core.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/6/6e/Mount_Sutro_Summit.JPG"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Mount_Sutro_forest_San_Francisco.jpg/1280px-Mount_Sutro_forest_San_Francisco.jpg"
   },
   {
     id: "sunset-bay-sail",
@@ -364,7 +364,7 @@ window.EVENTS_DATA = [
     retention: "High",
     why: "Premium, intimate, and uniquely local. Navigating the Bay under sails with views of Alcatraz and the Golden Gate at dusk is unforgettable.",
     details: "Charter a premium catamaran or sailboat for a sunset cruise on the SF Bay, complete with wine, local cheese, and city lights.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/8/89/Glorious_Sunset_over_the_Golden_Gate_Bridge_with_Alcatraz_Island_in_Shadow.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Sailboat_on_San_Francisco_Bay_at_sunset.jpg/1280px-Sailboat_on_San_Francisco_Bay_at_sunset.jpg"
   },
   {
     id: "gg-bridge-bike-ride",
@@ -375,7 +375,7 @@ window.EVENTS_DATA = [
     retention: "High",
     why: "Active and iconic. Navigating the bridge on bikes, exploring Sausalito, and returning via public ferry reframes public transit as an adventure.",
     details: "Rent bikes in the Marina, cycle across the Golden Gate Bridge to Sausalito, explore the houseboats, and return via the Sausalito Ferry.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/3/3f/Golden_gate_bridge.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Golden_Gate_Bridge_from_Sausalito.jpg/1280px-Golden_Gate_Bridge_from_Sausalito.jpg"
   },
   {
     id: "kayak-richardson-bay",
@@ -386,7 +386,7 @@ window.EVENTS_DATA = [
     retention: "Medium",
     why: "An active, physical outdoor break from screens. Kayaking past houseboats and seals with city and bridge views provides high mental restoration.",
     details: "A guided paddleboarding and kayaking session in Richardson Bay, Sausalito, with close-up views of the waterfront and Mt. Tamalpais.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/9/9e/Richardson_Bay_as_seen_from_Ring_Mountain.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Richardson_Bay_Sausalito.jpg/1280px-Richardson_Bay_Sausalito.jpg"
   },
   {
     id: "japantown-food-immersion",
@@ -432,7 +432,7 @@ window.EVENTS_DATA = [
     retention: "Medium",
     why: "Shows that San Francisco has long been a global magnet for creatives, weirdos, and people experimenting with radical new ways to live and work.",
     details: "A historical walking tour exploring the 1960s musical, artistic, and countercultural legacy of the Haight-Ashbury neighborhood.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/6/60/Junction_of_Haight_and_Ashbury.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Haight_Ashbury_street_San_Francisco.jpg/1280px-Haight_Ashbury_street_San_Francisco.jpg"
   },
   {
     id: "seward-street-slides",
@@ -444,7 +444,7 @@ window.EVENTS_DATA = [
     why: "Creates pure childlike joy and a highly memorable decompression moment. Sliding down steep concrete shoots on cardboard is uniquely SF.",
     details: "Grab a sheet of cardboard and join other founders to slide down the steep, historic concrete slides tucked away in a neighborhood pocket park.",
     link: "https://sfrecpark.org/destination/seward-street-slides/",
-    image: "https://foundsf.org/images/1/1b/Seward-slides-early.jpg"
+    image: "https://foundsf.org/images/thumb/1/1b/Seward_Street_Slides_San_Francisco.jpg/1280px-Seward_Street_Slides_San_Francisco.jpg"
   },
   {
     id: "secret-tiled-staircase",
@@ -455,7 +455,7 @@ window.EVENTS_DATA = [
     retention: "High",
     why: "Reveals the city's hidden geometry and artistic community spirit through exploration, climbing colorful neighborhood mosaic steps to 360-degree views.",
     details: "Discover hidden tiled staircases (like 16th Avenue or Moraga) winding through gardens to panoramic city overlooks like Grandview Park.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/c/cc/16th_Avenue_Tiled_Steps.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/16th_Avenue_Tiled_Steps_San_Francisco.jpg/1280px-16th_Avenue_Tiled_Steps_San_Francisco.jpg"
   },
   {
     id: "yoda-fountain-presidio",
@@ -467,7 +467,7 @@ window.EVENTS_DATA = [
     why: "Blends pop culture, CGI technical craft, storytelling, and Presidio's calming environment. Appeals to the geeky roots of technical builders.",
     details: "Visit the iconic bronze Yoda Fountain outside Lucasfilm headquarters in the Presidio, walking the redwood paths and visual effects campus.",
     link: "https://www.lucasfilm.com",
-    image: "https://upload.wikimedia.org/wikipedia/commons/f/f4/Letterman_Digital_Arts_Center%2C_Building_B.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Yoda_Fountain_Presidio_San_Francisco.jpg/1280px-Yoda_Fountain_Presidio_San_Francisco.jpg"
   },
   {
     id: "founder-wellness-day",
@@ -501,7 +501,7 @@ window.EVENTS_DATA = [
     why: "A creative, analog break from tech. Browsing the world's largest independent record store reminds founders of SF's non-digital, tactile culture.",
     details: "A casual afternoon walk through Haight-Ashbury, digging through vinyl crates at Amoeba Music, ending with pour-over coffee at a local cafe.",
     link: "https://www.amoeba.com",
-    image: "https://upload.wikimedia.org/wikipedia/commons/b/b5/Amoeba_Music_San_Francisco_Facade.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Amoeba_Music_Haight_Street_San_Francisco.jpg/1280px-Amoeba_Music_Haight_Street_San_Francisco.jpg",
     partner: "Amoeba Music Haight"
   },
   {
@@ -515,7 +515,7 @@ window.EVENTS_DATA = [
     why: "One of the country's premiere music festivals, held directly in Golden Gate Park. Layering a YC VIP cabana or meetup makes founders feel like VIP citizens.",
     details: "A major three-day music festival in Golden Gate Park. YC anchors this with dedicated meetup zones, VIP access passes, and post-show networking dinners.",
     link: "https://www.sfoutsidelands.com",
-    image: "https://upload.wikimedia.org/wikipedia/commons/e/e7/Outside_Lands_festival_crowd.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Outside_Lands_Golden_Gate_Park.jpg/1280px-Outside_Lands_Golden_Gate_Park.jpg",
     activation: "YC activation idea: Secure VIP passes, a central cabana, or a dedicated founder meetup zone on the park edge."
   },
   {
@@ -528,7 +528,7 @@ window.EVENTS_DATA = [
     why: "Demonstrates enterprise scale, customer access, and downtown business density. YC hosts side-dinners to show founders how to harness SF's corporate hub.",
     details: "The world's largest enterprise software conference takes over Moscone Center. YC hosts exclusive founder side-dinners and after-parties.",
     link: "https://www.salesforce.com/dreamforce/",
-    image: "https://upload.wikimedia.org/wikipedia/commons/0/03/Moscone_Center%2C_San_Francisco.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Moscone_Center_San_Francisco.jpg/1280px-Moscone_Center_San_Francisco.jpg",
     activation: "YC activation: Host VIP side-dinners mixing founders with enterprise sales executives and early SaaS alumni."
   },
   {
@@ -564,7 +564,7 @@ window.EVENTS_DATA = [
     retention: "Very High",
     why: "Turns regional discovery and retention into an ongoing adventure, giving founders points and physical stamps for exploring parks, museums, and food scenes.",
     details: "A structured, batch-long physical passport. Complete items (like a redwoods hike, CHM visit, sailing, and a food crawl) to unlock a post-batch dinner.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/3/30/Angel_Island_%28California%29.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/7/72/Ayala_Cove_Ferry_Terminal_on_Angel_Island_in_the_San_Francisco_Bay.jpg"
   }
 ];
 
