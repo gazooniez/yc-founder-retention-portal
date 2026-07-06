@@ -1,519 +1,1307 @@
-// YC Founder Bay Area Retention Portal - Frontend Engine
-document.addEventListener("DOMContentLoaded", () => {
-  // --- State Variables ---
-  const state = {
-    selectedThemes: [],
-    selectedScales: [],
-    selectedImpacts: [],
-    searchQuery: "",
-    topTierOnly: false,
-    comparedEvents: [], // Array of event objects (max 3)
-    drawerExpanded: false
+const FALLBACK_IMAGE = "./hero_banner.jpg";
+
+const EVENT_CATALOG = [
+  {
+    id: "founders-stayed",
+    name: "Founders Who Stayed Dinner",
+    category: "YC Access",
+    attendees: "10-20",
+    attendeeMin: 10,
+    cost: "$$$",
+    costRank: 3,
+    time: "2.5-3 hrs",
+    timeRank: 1,
+    commitment: "Low",
+    priority: 1,
+    ycOnly: true,
+    image: "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=1200&auto=format&fit=crop&q=80",
+    org: "Y Combinator",
+    url: "https://www.ycombinator.com/",
+    partnerPath: "YC alumni curation, private dining room, strong moderator",
+    assessment: "Highest strategic fit. Directly answers why founders should stay in SF with lived credibility.",
+    bestFor: "Retention message, trust-building, alumni density"
+  },
+  {
+    id: "ggp-picnic",
+    name: "Golden Gate Park Founder Picnic",
+    category: "Community",
+    attendees: "75-250",
+    attendeeMin: 75,
+    cost: "$$",
+    costRank: 2,
+    time: "3-4 hrs",
+    timeRank: 2,
+    commitment: "Medium",
+    priority: 2,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1526218626217-dc65a298442d?w=1200&auto=format&fit=crop&q=80",
+    org: "SF Rec & Park",
+    url: "https://sfrecpark.org/734/Golden-Gate-Park",
+    partnerPath: "Park permit, catered picnic, alumni hosts, light games",
+    assessment: "Best scalable tradition. Low pressure, family-friendly, repeatable, and brand-safe.",
+    bestFor: "Batch kickoff, quarterly alumni ritual"
+  },
+  {
+    id: "angel-island",
+    name: "Angel Island Ferry + Summit Picnic",
+    category: "Nature",
+    attendees: "25-60",
+    attendeeMin: 25,
+    cost: "$$",
+    costRank: 2,
+    time: "5-7 hrs",
+    timeRank: 3,
+    commitment: "High",
+    priority: 3,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&auto=format&fit=crop&q=80",
+    org: "Angel Island State Park",
+    url: "https://www.parks.ca.gov/?page_id=468",
+    partnerPath: "Ferry tickets, boxed lunch, optional guide, low-hike alternate plan",
+    assessment: "Very high emotional impact. The clearest nearby-nature proof point, but weather and mobility matter.",
+    bestFor: "Awe, reflection, international-founder orientation"
+  },
+  {
+    id: "mission-murals",
+    name: "Mission Murals + Food Tour",
+    category: "Culture",
+    attendees: "20-50",
+    attendeeMin: 20,
+    cost: "$$",
+    costRank: 2,
+    time: "3-4 hrs",
+    timeRank: 2,
+    commitment: "Medium",
+    priority: 4,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1561055657-b9e0bf0fa360?w=1200&auto=format&fit=crop&q=80",
+    org: "Precita Eyes Muralists",
+    url: "https://www.precitaeyes.org/",
+    partnerPath: "Local artist guide, taqueria crawl, pod-based route",
+    assessment: "Excellent for making SF feel multicultural, walkable, and alive beyond tech offices.",
+    bestFor: "International founders, neighborhood belonging"
+  },
+  {
+    id: "chinatown-banquet",
+    name: "Chinatown Night Walk + Banquet",
+    category: "Dinner",
+    attendees: "30-80",
+    attendeeMin: 30,
+    cost: "$$",
+    costRank: 2,
+    time: "3-4 hrs",
+    timeRank: 2,
+    commitment: "Medium",
+    priority: 5,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1506157786151-b8491531f063?w=1200&auto=format&fit=crop&q=80",
+    org: "SF Chinatown",
+    url: "https://www.sfchinatown.com/",
+    partnerPath: "Walking route, fortune cookie stop, banquet room",
+    assessment: "Strong group bonding and especially welcoming for international founders.",
+    bestFor: "Late-batch social, cross-cohort mixing"
+  },
+  {
+    id: "wave-organ",
+    name: "Wave Organ + Crissy Sunset",
+    category: "Nature",
+    attendees: "12-40",
+    attendeeMin: 12,
+    cost: "$-$$",
+    costRank: 1,
+    time: "1.5-2.5 hrs",
+    timeRank: 1,
+    commitment: "Low",
+    priority: 6,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1200&auto=format&fit=crop&q=80",
+    org: "Exploratorium",
+    url: "https://www.exploratorium.edu/visit/wave-organ",
+    partnerPath: "Snack/drink hospitality, tide timing, optional dinner after",
+    assessment: "Distinctive, low-cost, and meditative. Best as a recurring ritual, not a flagship.",
+    bestFor: "Quiet reflection, low-lift weekday event"
+  },
+  {
+    id: "stern-grove",
+    name: "Stern Grove Reserved Table Day",
+    category: "Sponsor",
+    attendees: "10-40 hosted",
+    attendeeMin: 10,
+    cost: "$$$",
+    costRank: 3,
+    time: "4-6 hrs",
+    timeRank: 3,
+    commitment: "High",
+    priority: 7,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1448375240586-882707db888b?w=1200&auto=format&fit=crop&q=80",
+    org: "Stern Grove Festival",
+    url: "https://www.sterngrove.org/2026tables",
+    partnerPath: "Reserved table or lounge donation, founder picnic, alumni hosts",
+    assessment: "Excellent special-access layer for a free civic institution. Book early.",
+    bestFor: "Summer culture, nonprofit support, special access"
+  },
+  {
+    id: "hardly-strictly",
+    name: "Hardly Strictly Founder Picnic",
+    category: "Sponsor",
+    attendees: "50-200 hosted",
+    attendeeMin: 50,
+    cost: "$$",
+    costRank: 2,
+    time: "4-8 hrs",
+    timeRank: 3,
+    commitment: "High",
+    priority: 8,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1200&auto=format&fit=crop&q=80",
+    org: "Hardly Strictly Bluegrass",
+    url: "https://hardlystrictlybluegrass.com/",
+    partnerPath: "Adjacent picnic, meetup point, alumni hosts, transit plan",
+    assessment: "Big civic magic, but avoid direct visible sponsorship because the festival is intentionally noncommercial.",
+    bestFor: "Annual fall tradition"
+  },
+  {
+    id: "makerspace-arcade",
+    name: "Makerspace + Arcade Night",
+    category: "Builder",
+    attendees: "20-60",
+    attendeeMin: 20,
+    cost: "$$-$$$",
+    costRank: 2,
+    time: "3-4 hrs",
+    timeRank: 2,
+    commitment: "Medium",
+    priority: 9,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1200&auto=format&fit=crop&q=80",
+    org: "Musee Mecanique",
+    url: "https://museemecanique.com/",
+    partnerPath: "Workshop buyout, arcade free-play, food trucks",
+    assessment: "Strong Supabase fit: technical creativity without making the event feel like work.",
+    bestFor: "Builder identity, playful technical bonding"
+  },
+  {
+    id: "fleet-week",
+    name: "Fleet Week Bay Viewing Party",
+    category: "Sponsor",
+    attendees: "30-100",
+    attendeeMin: 30,
+    cost: "$$$$",
+    costRank: 4,
+    time: "4-6 hrs",
+    timeRank: 3,
+    commitment: "High",
+    priority: 10,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1473830394358-91588751b241?w=1200&auto=format&fit=crop&q=80",
+    org: "San Francisco Fleet Week",
+    url: "https://fleetweeksf.org/air-show/",
+    partnerPath: "Boat charter or waterfront venue, food, founder stories",
+    assessment: "High wow factor, high cost. Use as a premium alumni/customer moment.",
+    bestFor: "Special access, skyline spectacle"
+  },
+  {
+    id: "litquake",
+    name: "Litquake Founder Storytelling Salon",
+    category: "Culture",
+    attendees: "20-75",
+    attendeeMin: 20,
+    cost: "$-$$",
+    costRank: 1,
+    time: "2-4 hrs",
+    timeRank: 2,
+    commitment: "Medium",
+    priority: 11,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=1200&auto=format&fit=crop&q=80",
+    org: "Litquake",
+    url: "https://www.litquake.org/sponsor",
+    partnerPath: "Sponsor literary tech track, founder writing salon, afterparty",
+    assessment: "Smart brand fit if framed around builder stories and lessons learned.",
+    bestFor: "October culture, thoughtful founder narrative"
+  },
+  {
+    id: "sketchfest",
+    name: "Supabase x SF Sketchfest: Live Show + Talent Access",
+    category: "Sponsor",
+    attendees: "20-80",
+    attendeeMin: 20,
+    cost: "$$-$$$",
+    costRank: 2,
+    time: "2-4 hrs",
+    timeRank: 2,
+    commitment: "Medium",
+    priority: 12,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?w=1200&auto=format&fit=crop&q=80",
+    org: "SF Sketchfest",
+    url: "https://sfsketchfest.com/get-involved/",
+    partnerPath: "Sponsor a live show block, host a talent-access salon, and keep the night anchored in performances rather than branded mingling",
+    assessment: "Best as a sponsor package with real stage time, not a flimsy mixer. The value is in live comedy plus proximity to talent.",
+    bestFor: "Live comedy, talent access, sponsor hospitality"
+  },
+  {
+    id: "south-bay-systems",
+    name: "Computer History Museum + Prototype Lab Crawl",
+    category: "Builder",
+    attendees: "25-50",
+    attendeeMin: 25,
+    cost: "$$$",
+    costRank: 3,
+    time: "6-8 hrs",
+    timeRank: 3,
+    commitment: "High",
+    priority: 13,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&auto=format&fit=crop&q=80",
+    org: "Computer History Museum",
+    url: "https://computerhistory.org/",
+    partnerPath: "Private museum access, demo-lab stops, archive highlights, lunch near Mountain View or Palo Alto",
+    assessment: "Best when it feels tactile and specific: demos, prototypes, and artifacts that spark founder conversation. Avoid turning it into a passive museum day.",
+    bestFor: "Technical founders, product history, hands-on inspiration"
+  },
+  {
+    id: "stanford-berkeley-labs",
+    name: "Stanford / Berkeley Makerspace Crawl",
+    category: "Builder",
+    attendees: "15-35",
+    attendeeMin: 15,
+    cost: "$$-$$$",
+    costRank: 2,
+    time: "4-6 hrs",
+    timeRank: 3,
+    commitment: "High",
+    priority: 14,
+    ycOnly: true,
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200&auto=format&fit=crop&q=80",
+    org: "Stanford University",
+    url: "https://www.stanford.edu/",
+    partnerPath: "AMPF visit, Berkeley lab stop, maker-space hosts, prototypes and researcher conversations",
+    assessment: "Best when it feels like actual making: tools, builds, and lab culture. The story is research moving into something people can touch.",
+    bestFor: "Deep tech, AI, robotics, bio founders"
+  },
+  {
+    id: "ai-frontier-visits",
+    name: "AI Frontier Operator Visits",
+    category: "YC Access",
+    attendees: "10-20",
+    attendeeMin: 10,
+    cost: "$-$$",
+    costRank: 1,
+    time: "2-3 hrs",
+    timeRank: 1,
+    commitment: "Low",
+    priority: 15,
+    ycOnly: true,
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&auto=format&fit=crop&q=80",
+    org: "Frontier AI companies",
+    url: "https://www.ycombinator.com/companies",
+    partnerPath: "Small-group operator host, no recruiting deck, off-record Q&A",
+    assessment: "Potentially magical, but scarce. Keep groups small and the conversation candid.",
+    bestFor: "AI founders, high-signal access moments"
+  },
+  {
+    id: "random-walk-dinners",
+    name: "Random Walk Dinners with SF Locals",
+    category: "Dinner",
+    attendees: "6-10 per table",
+    attendeeMin: 6,
+    cost: "$$",
+    costRank: 2,
+    time: "2.5 hrs",
+    timeRank: 1,
+    commitment: "Low",
+    priority: 16,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?w=1200&auto=format&fit=crop&q=80",
+    org: "Local host network",
+    url: "https://www.opentable.com/san-francisco-restaurants",
+    partnerPath: "Curated tables mixing founders with artists, scientists, chefs, designers, operators",
+    assessment: "Manufactures high-quality serendipity. Strong retention value without heavy production.",
+    bestFor: "Deep conversation, cross-disciplinary city texture"
+  },
+  {
+    id: "alamo-drafthouse-private-screening",
+    name: "Alamo Drafthouse Private Screening + Bear vs Bull",
+    category: "Culture",
+    attendees: "40-120",
+    attendeeMin: 40,
+    cost: "$$$",
+    costRank: 3,
+    time: "3-4 hrs",
+    timeRank: 2,
+    commitment: "Medium",
+    priority: 17,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1200&auto=format&fit=crop&q=80",
+    org: "Alamo Drafthouse New Mission",
+    url: "https://drafthouse.com/sf/theater/new-mission",
+    partnerPath: "Private auditorium buyout, founder-selected film, Bear vs Bull bar reception before or after",
+    assessment: "High-control indoor social night with a real Mission venue identity. The bar reception makes it feel less like a corporate screening and more like a hosted SF night out.",
+    bestFor: "Film, indoor premium social, partner-friendly evening"
+  },
+  {
+    id: "charter-muni-train-night-cruise",
+    name: "Charter Muni Train Night Cruise",
+    category: "Transit",
+    attendees: "30-40",
+    attendeeMin: 30,
+    cost: "$$-$$$",
+    costRank: 2,
+    time: "2-3 hrs",
+    timeRank: 1,
+    commitment: "Medium",
+    priority: 18,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?w=1200&auto=format&fit=crop&q=80",
+    org: "SFMTA / Market Street Railway",
+    url: "https://www.sfmta.com/charter-cable-car-or-streetcar",
+    partnerPath: "Historic streetcar charter on the F Market route, simple pre/post drinks near Ferry Building or Castro",
+    assessment: "A very SF-specific memory anchor. Strong concept, but capacity, route, lottery timing, and special-event blackout dates make it a plan-ahead activity.",
+    bestFor: "Civic texture, transit nerds, memorable night out"
+  },
+  {
+    id: "ocean-beach-fire",
+    name: "Ocean Beach Fire Pits + Outer Sunset Food",
+    category: "Nature",
+    attendees: "30-100",
+    attendeeMin: 30,
+    cost: "$-$$",
+    costRank: 1,
+    time: "3-4 hrs",
+    timeRank: 2,
+    commitment: "Medium",
+    priority: 19,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1473116763269-255ea760f56e?w=1200&auto=format&fit=crop&q=80",
+    org: "Golden Gate National Recreation Area",
+    url: "https://www.nps.gov/goga/planyourvisit/ocean-beach.htm",
+    partnerPath: "Fire pit rules, blankets, s'mores, Outer Sunset food partner",
+    assessment: "High emotional atmosphere and easy bonding, but wind/fog logistics need care.",
+    bestFor: "Casual bonding, post-Demo Day decompression"
+  },
+  {
+    id: "lands-end",
+    name: "Land's End Coastal Hike + Picnic",
+    category: "Nature",
+    attendees: "20-60",
+    attendeeMin: 20,
+    cost: "$-$$",
+    costRank: 1,
+    time: "2.5-4 hrs",
+    timeRank: 2,
+    commitment: "Medium",
+    priority: 20,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&auto=format&fit=crop&q=80",
+    org: "Golden Gate National Recreation Area",
+    url: "https://www.nps.gov/goga/planyourvisit/landsend.htm",
+    partnerPath: "Trail guide, boxed picnic, accessible alternate at Sutro Baths overlook",
+    assessment: "Classic SF coastal drama inside city limits. Good value, strong place attachment.",
+    bestFor: "Nature proof point, reflective walks"
+  },
+  {
+    id: "presidio-forest",
+    name: "Presidio Forest Bathing + High-End Picnic",
+    category: "Wellness",
+    attendees: "20-50",
+    attendeeMin: 20,
+    cost: "$$-$$$",
+    costRank: 2,
+    time: "3-4 hrs",
+    timeRank: 2,
+    commitment: "Medium",
+    priority: 21,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1511497584788-876760111969?w=1200&auto=format&fit=crop&q=80",
+    org: "Presidio Trust",
+    url: "https://presidio.gov/",
+    partnerPath: "Guide, quiet walking route, catered picnic on the Main Parade Ground",
+    assessment: "Restorative and premium without being flashy. Good antidote to batch intensity.",
+    bestFor: "Wellness, sustainable founder life"
+  },
+  {
+    id: "marin-headlands",
+    name: "Marin Headlands Hike + Sausalito Seafood",
+    category: "Nature",
+    attendees: "20-50",
+    attendeeMin: 20,
+    cost: "$$-$$$",
+    costRank: 2,
+    time: "5-7 hrs",
+    timeRank: 3,
+    commitment: "High",
+    priority: 22,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200&auto=format&fit=crop&q=80",
+    org: "Golden Gate National Recreation Area",
+    url: "https://www.nps.gov/goga/marin-headlands.htm",
+    partnerPath: "Shuttle, route guide, seafood lunch reservation, low-hike view stop",
+    assessment: "Beautiful and memorable, but transportation and fitness-level planning are essential.",
+    bestFor: "Active founders, nature plus food"
+  },
+  {
+    id: "gg-bridge-bike",
+    name: "Golden Gate Bridge Bike + Sausalito Ferry",
+    category: "Water",
+    attendees: "20-50",
+    attendeeMin: 20,
+    cost: "$$",
+    costRank: 2,
+    time: "4-6 hrs",
+    timeRank: 3,
+    commitment: "High",
+    priority: 23,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=1200&auto=format&fit=crop&q=80",
+    org: "Golden Gate Ferry",
+    url: "https://www.goldengate.org/ferry/",
+    partnerPath: "Bike rentals, safety briefing, ferry return, Sausalito stop",
+    assessment: "Iconic and active. Requires clear safety and alternate transit options.",
+    bestFor: "Active social bonding, public-transit adventure"
+  },
+  {
+    id: "bay-sail",
+    name: "Sunset Bay Sail",
+    category: "Water",
+    attendees: "12-40",
+    attendeeMin: 12,
+    cost: "$$$$",
+    costRank: 4,
+    time: "2.5-4 hrs",
+    timeRank: 2,
+    commitment: "Medium",
+    priority: 24,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1200&auto=format&fit=crop&q=80",
+    org: "San Francisco Bay sailing charters",
+    url: "https://www.adventurecat.com/",
+    partnerPath: "Private catamaran or sailboat, food/drinks, alumni story prompt",
+    assessment: "Premium and memorable. Use selectively where the guest list justifies the spend.",
+    bestFor: "High-touch alumni, customer or VIP event"
+  },
+  {
+    id: "kayak-sup",
+    name: "Kayak or SUP in Richardson Bay",
+    category: "Water",
+    attendees: "10-30",
+    attendeeMin: 10,
+    cost: "$$",
+    costRank: 2,
+    time: "3-4 hrs",
+    timeRank: 2,
+    commitment: "Medium",
+    priority: 25,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=1200&auto=format&fit=crop&q=80",
+    org: "Sea Trek",
+    url: "https://www.seatrek.com/",
+    partnerPath: "Guided paddle, wetsuit/gear, shuttle, easy lunch after",
+    assessment: "Great active reset for smaller groups. Weather and comfort with water limit scale.",
+    bestFor: "Wellness, small team bonding"
+  },
+  {
+    id: "exploratorium-after-dark",
+    name: "Exploratorium After Dark",
+    category: "Builder",
+    attendees: "30-100",
+    attendeeMin: 30,
+    cost: "$$",
+    costRank: 2,
+    time: "2-4 hrs",
+    timeRank: 2,
+    commitment: "Medium",
+    priority: 26,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=1200&auto=format&fit=crop&q=80",
+    org: "Exploratorium",
+    url: "https://www.exploratorium.edu/visit/calendar/after-dark",
+    partnerPath: "Group tickets, meet-up point, pre/post drinks, curated exhibit prompts",
+    assessment: "Curiosity-driven and easy to run. Add a small founder layer so it does not feel like generic admission.",
+    bestFor: "Science, play, technical curiosity"
+  },
+  {
+    id: "palace-games-attraction",
+    name: "Palace Games: The Attraction",
+    category: "Builder",
+    attendees: "4-8",
+    attendeeMin: 4,
+    cost: "$425 / private room",
+    costRank: 4,
+    time: "120 mins",
+    timeRank: 2,
+    commitment: "Medium",
+    priority: 26.5,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=1200&auto=format&fit=crop&q=80",
+    org: "Palace Games",
+    url: "https://palace-games.com/the-attraction/",
+    partnerPath: "Private room, 4-8 players, Palace of Fine Arts, 120-minute mystery run",
+    assessment: "Immersive, collaborative, and location-rich. The official FAQ says all escape rooms are 16+ and The Attraction is private room only.",
+    bestFor: "Small high-trust teams, puzzle lovers, hands-on collaboration"
+  },
+  {
+    id: "long-now",
+    name: "Long Now Future-Thinking Salon",
+    category: "Culture",
+    attendees: "20-60",
+    attendeeMin: 20,
+    cost: "$$",
+    costRank: 2,
+    time: "2-3 hrs",
+    timeRank: 1,
+    commitment: "Low",
+    priority: 27,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=1200&auto=format&fit=crop&q=80",
+    org: "Long Now Foundation",
+    url: "https://longnow.org/",
+    partnerPath: "Private discussion, long-term prompt, drinks or dinner nearby",
+    assessment: "Intellectually distinctive. Best for founders who enjoy philosophical depth.",
+    bestFor: "Long-term company building, reflective founders"
+  },
+  {
+    id: "artist-studio-hop",
+    name: "Artist Studio + Gallery Hop",
+    category: "Culture",
+    attendees: "12-30",
+    attendeeMin: 12,
+    cost: "$$-$$$",
+    costRank: 2,
+    time: "2.5-4 hrs",
+    timeRank: 2,
+    commitment: "Medium",
+    priority: 28,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=1200&auto=format&fit=crop&q=80",
+    org: "Minnesota Street Project",
+    url: "https://minnesotastreetproject.com/",
+    partnerPath: "Gallery/studio host, artist talk, wine/NA drinks, dinner nearby",
+    assessment: "Broadens founders' social world beyond tech. Small groups work best.",
+    bestFor: "Creative inspiration, non-tech community"
+  },
+  {
+    id: "haight-ramble",
+    name: "Haight-Ashbury Counterculture Ramble",
+    category: "Culture",
+    attendees: "15-40",
+    attendeeMin: 15,
+    cost: "$-$$",
+    costRank: 1,
+    time: "2-3 hrs",
+    timeRank: 1,
+    commitment: "Low",
+    priority: 30,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1539625318667-1560731dce55?w=1200&auto=format&fit=crop&q=80",
+    org: "Haight Ashbury tour operators",
+    url: "https://www.sftourismtips.com/haight-ashbury.html",
+    partnerPath: "Local guide, Amoeba stop, coffee or casual dinner",
+    assessment: "Good light-touch culture. Better as a passport item or optional small outing.",
+    bestFor: "Music history, analog decompression"
+  },
+  {
+    id: "seward-slides",
+    name: "Seward Street Slides Challenge",
+    category: "Play",
+    attendees: "10-35",
+    attendeeMin: 10,
+    cost: "$",
+    costRank: 1,
+    time: "1-2 hrs",
+    timeRank: 1,
+    commitment: "Low",
+    priority: 31,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&auto=format&fit=crop&q=80",
+    org: "SF Rec & Park",
+    url: "https://sfrecpark.org/destination/seward-street-slides/",
+    partnerPath: "Cardboard, safety note, nearby coffee or dinner",
+    assessment: "Pure joy and very SF. Too small for a flagship, great for playful pods.",
+    bestFor: "Decompression, quirky hidden gems"
+  },
+  {
+    id: "tiled-stairs",
+    name: "Secret Tiled Staircase View Walk",
+    category: "Nature",
+    attendees: "10-30",
+    attendeeMin: 10,
+    cost: "$",
+    costRank: 1,
+    time: "1.5-2.5 hrs",
+    timeRank: 1,
+    commitment: "Low",
+    priority: 32,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1501183007986-d0d080b147f9?w=1200&auto=format&fit=crop&q=80",
+    org: "16th Avenue Tiled Steps",
+    url: "https://www.16thavenuetiledsteps.com/",
+    partnerPath: "Self-guided route, viewpoint stop, neighborhood cafe",
+    assessment: "Low-cost and beautiful. Best as a passport item or small recurring walk.",
+    bestFor: "City discovery, light exercise"
+  },
+  {
+    id: "spark-social",
+    name: "Spark Social Food Trucks + Mini-Golf",
+    category: "Food",
+    attendees: "50-150",
+    attendeeMin: 50,
+    cost: "$$",
+    costRank: 2,
+    time: "2-4 hrs",
+    timeRank: 2,
+    commitment: "Medium",
+    priority: 33,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1565123409695-7b5ef63a7fe4?w=1200&auto=format&fit=crop&q=80",
+    org: "Spark Social SF",
+    url: "https://sparksocialsf.com/",
+    partnerPath: "Reserved fire pits/tables, food truck vouchers, mini-golf blocks",
+    assessment: "Operationally easy and inclusive. Less unique, but reliable for big groups.",
+    bestFor: "Large casual mixer, dietary diversity"
+  },
+  {
+    id: "ferry-building-market",
+    name: "Ferry Building Farmers Market Picnic",
+    category: "Food",
+    attendees: "20-80",
+    attendeeMin: 20,
+    cost: "$-$$",
+    costRank: 1,
+    time: "2-3 hrs",
+    timeRank: 1,
+    commitment: "Low",
+    priority: 34,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1488459718432-0105517d57f7?w=1200&auto=format&fit=crop&q=80",
+    org: "Foodwise Ferry Plaza Farmers Market",
+    url: "https://foodwise.org/markets/ferry-plaza-farmers-market/",
+    partnerPath: "Market tokens, guided vendor route, waterfront picnic",
+    assessment: "Accessible and local. Works well for a Saturday morning ritual.",
+    bestFor: "Food culture, low-pressure social"
+  },
+  {
+    id: "japantown-food",
+    name: "Japantown Food + Cultural Immersion",
+    category: "Food",
+    attendees: "15-40",
+    attendeeMin: 15,
+    cost: "$$",
+    costRank: 2,
+    time: "2.5-4 hrs",
+    timeRank: 2,
+    commitment: "Medium",
+    priority: 35,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=1200&auto=format&fit=crop&q=80",
+    org: "SF Japantown",
+    url: "https://sfjapantown.org/",
+    partnerPath: "Food crawl, cultural guide, tea/mochi/ramen stops",
+    assessment: "Welcoming and intimate. Strong for international founders and small groups.",
+    bestFor: "Cultural discovery, food bonding"
+  },
+  {
+    id: "north-beach-chinatown",
+    name: "North Beach + Chinatown Food Walk",
+    category: "Food",
+    attendees: "20-60",
+    attendeeMin: 20,
+    cost: "$$",
+    costRank: 2,
+    time: "3-4 hrs",
+    timeRank: 2,
+    commitment: "Medium",
+    priority: 36,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200&auto=format&fit=crop&q=80",
+    org: "Edible Excursions",
+    url: "https://edibleexcursions.net/",
+    partnerPath: "Food tour partner, small groups, optional banquet close",
+    assessment: "High success probability. Shows walkability and layered neighborhood history.",
+    bestFor: "Food, history, newcomer orientation"
+  },
+  {
+    id: "giants-game",
+    name: "Giants Game Group Section",
+    category: "Sports",
+    attendees: "15-80",
+    attendeeMin: 15,
+    cost: "$$-$$$$",
+    costRank: 2,
+    time: "3-4 hrs",
+    timeRank: 2,
+    commitment: "Medium",
+    priority: 37,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1530541930197-ff16ac917b0e?w=1200&auto=format&fit=crop&q=80",
+    org: "San Francisco Giants",
+    url: "https://www.mlb.com/giants/tickets/groups-and-hospitality",
+    partnerPath: "Group section or suite, Mission Rock pregame mixer",
+    assessment: "Reliable and easy. Less unique than nature/culture but strong for casual bonding.",
+    bestFor: "Sports, partner/family-friendly social"
+  },
+  {
+    id: "warriors-game",
+    name: "Warriors / Chase Center Night",
+    category: "Sports",
+    attendees: "12-50",
+    attendeeMin: 12,
+    cost: "$$$-$$$$",
+    costRank: 3,
+    time: "3-4 hrs",
+    timeRank: 2,
+    commitment: "Medium",
+    priority: 38,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=1200&auto=format&fit=crop&q=80",
+    org: "Chase Center",
+    url: "https://www.chasecenter.com/",
+    partnerPath: "Suite or group tickets, pregame dinner in Mission Bay",
+    assessment: "High energy and easy to understand. Cost can climb quickly.",
+    bestFor: "Sports fans, premium casual night"
+  },
+  {
+    id: "founder-run-club",
+    name: "Founder Run Club + Coffee",
+    category: "Wellness",
+    attendees: "10-60",
+    attendeeMin: 10,
+    cost: "$",
+    costRank: 1,
+    time: "1-2 hrs",
+    timeRank: 1,
+    commitment: "Low",
+    priority: 39,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=1200&auto=format&fit=crop&q=80",
+    org: "Golden Gate Running Club",
+    url: "https://www.goldengaterunningclub.org/weekly-runs",
+    partnerPath: "Weekly route, pace groups, coffee sponsor, non-runner walking option",
+    assessment: "Cheap, repeatable, and habit-forming. Excellent retention mechanics.",
+    bestFor: "Recurring ritual, health, friend formation"
+  },
+  {
+    id: "climbing-night",
+    name: "Founder Climbing Night",
+    category: "Wellness",
+    attendees: "15-50",
+    attendeeMin: 15,
+    cost: "$$",
+    costRank: 2,
+    time: "2-3 hrs",
+    timeRank: 1,
+    commitment: "Low",
+    priority: 40,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1522163182402-834f871fd851?w=1200&auto=format&fit=crop&q=80",
+    org: "Movement San Francisco",
+    url: "https://movementgyms.com/san-francisco/",
+    partnerPath: "Gym group rate, intro class, post-climb food",
+    assessment: "Good for interest-group matching and recurring friendships.",
+    bestFor: "Community matching, active founders"
+  },
+  {
+    id: "yoga-brunch",
+    name: "Sunrise Yoga + Brunch with Views",
+    category: "Wellness",
+    attendees: "20-80",
+    attendeeMin: 20,
+    cost: "$$",
+    costRank: 2,
+    time: "2-3 hrs",
+    timeRank: 1,
+    commitment: "Low",
+    priority: 41,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1200&auto=format&fit=crop&q=80",
+    org: "Outdoor Yoga SF",
+    url: "https://www.outdoor-yoga.org/schedule",
+    partnerPath: "Instructor, park permit if needed, brunch/coffee, non-yoga option",
+    assessment: "Inclusive if framed gently. Avoid making wellness feel mandatory or performative.",
+    bestFor: "Recovery, partner-friendly morning"
+  },
+  {
+    id: "coastal-cleanup",
+    name: "Coastal Cleanup Founder Volunteer Day",
+    category: "Civic",
+    attendees: "30-150",
+    attendeeMin: 30,
+    cost: "$",
+    costRank: 1,
+    time: "2-4 hrs",
+    timeRank: 2,
+    commitment: "Medium",
+    priority: 42,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1482862549707-f63cb32c5fd9?w=1200&auto=format&fit=crop&q=80",
+    org: "California Coastal Commission",
+    url: "https://www.coastal.ca.gov/publiced/ccd/ccd.html",
+    partnerPath: "Volunteer site coordination, gloves/bags, picnic or tacos after",
+    assessment: "Adds civic belonging and purpose. Best when paired with food/social time.",
+    bestFor: "Service, team values, civic integration"
+  },
+  {
+    id: "sunday-streets-founder-ride",
+    name: "Sunday Streets Founder Ride",
+    category: "Civic",
+    attendees: "30-120",
+    attendeeMin: 30,
+    cost: "$-$$",
+    costRank: 1,
+    time: "3-5 hrs",
+    timeRank: 2,
+    commitment: "Medium",
+    priority: 43,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=1200&auto=format&fit=crop&q=80",
+    org: "Sunday Streets SF",
+    url: "https://sundaystreetssf.com/sponsor/",
+    partnerPath: "Sponsor route, bike/walk crew, local business crawl",
+    assessment: "Good civic fit and accessible. Lower exclusivity, so add a founder-host layer.",
+    bestFor: "Neighborhood integration, families, civic support"
+  },
+  {
+    id: "downtown-first-thursdays",
+    name: "Downtown First Thursdays Founder Crawl",
+    category: "Civic",
+    attendees: "30-150",
+    attendeeMin: 30,
+    cost: "$-$$",
+    costRank: 1,
+    time: "2-4 hrs",
+    timeRank: 2,
+    commitment: "Medium",
+    priority: 44,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1514565131-fce0801e5785?w=1200&auto=format&fit=crop&q=80",
+    org: "Downtown First Thursdays",
+    url: "https://www.dftsf.com/",
+    partnerPath: "Meetup point, food/drink vouchers, afterparty, alumni guides",
+    assessment: "Easy recurring activation. Needs a hosted layer to feel premium.",
+    bestFor: "Downtown energy, broad founder community"
+  },
+  {
+    id: "yerba-buena-festival",
+    name: "Yerba Buena Gardens Festival Outing",
+    category: "Culture",
+    attendees: "20-100",
+    attendeeMin: 20,
+    cost: "$",
+    costRank: 1,
+    time: "1.5-3 hrs",
+    timeRank: 1,
+    commitment: "Low",
+    priority: 45,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1200&auto=format&fit=crop&q=80",
+    org: "Yerba Buena Gardens Festival",
+    url: "https://ybgfestival.org/",
+    partnerPath: "Founder meetup, picnic or nearby lunch, optional downtown office visit",
+    assessment: "Free and accessible. Useful for downtown daytime programming.",
+    bestFor: "Arts, easy culture, low-cost filler"
+  },
+  {
+    id: "sandcastle-classic",
+    name: "Leap Sandcastle Classic Founder Builder Day",
+    category: "Play",
+    attendees: "30-120",
+    attendeeMin: 30,
+    cost: "$-$$",
+    costRank: 1,
+    time: "3-5 hrs",
+    timeRank: 2,
+    commitment: "Medium",
+    priority: 46,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&auto=format&fit=crop&q=80",
+    org: "Leap Arts in Education",
+    url: "https://leapsandcastleclassic.org/",
+    partnerPath: "Team participation or hosted beach area, design challenge, food after",
+    assessment: "Great metaphor for building and design. Seasonal and weather-dependent.",
+    bestFor: "Play, families/partners, engineering creativity"
+  },
+  {
+    id: "bay-area-passport",
+    name: "Bay Area Passport Program",
+    category: "Passport",
+    attendees: "100-300",
+    attendeeMin: 100,
+    cost: "$$",
+    costRank: 2,
+    time: "Ongoing",
+    timeRank: 3,
+    commitment: "High",
+    priority: 47,
+    ycOnly: false,
+    image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200&auto=format&fit=crop&q=80",
+    org: "Supabase / YC",
+    url: "https://supabase.com/",
+    partnerPath: "Physical or digital passport, stamps, prizes, completion dinner",
+    assessment: "Turns retention into an ongoing adventure. Strong umbrella for smaller ideas.",
+    bestFor: "Batch-long engagement, self-directed discovery"
+  }
+];
+
+const SPONSOR_TARGETS = [
+  ["Stern Grove Festival", "June-August Sundays", "10k+ per show", "Reserved tables, sponsor giveaways, founder picnic", "https://www.sterngrove.org/"],
+  ["Hardly Strictly Bluegrass", "Early October", "600k-750k+ weekend", "Adjacent founder picnic; avoid in-festival branding", "https://hardlystrictlybluegrass.com/"],
+  ["Sundown Cinema", "June-October", "Hundreds to low thousands", "Picnic kits, blanket zone, post-film drinks", "https://sfstandard.com/sundown-cinema/"],
+  ["Litquake / Lit Crawl", "October 24, 2026 Lit Crawl", "~5,000 Lit Crawl", "Founder storytelling salon or literary tech track", "https://www.litquake.org/litcrawl"],
+  ["Downtown First Thursdays", "Monthly through 2026", "Large monthly crowd", "Founder meetup point, food vouchers, afterparty", "https://www.dftsf.com/"],
+  ["Sunday Streets", "Season dependent", "Thousands per route", "Sponsor route, founder bike/walk crew", "https://sundaystreetssf.com/sponsor/"],
+  ["Outside Lands", "Aug. 7-9, 2026", "Massive ticketed festival", "VIP/cabana for premium subgroup", "https://sfoutsidelands.com/"],
+  ["Portola", "Sept. 26-27, 2026", "Large 21+ festival", "Dogpatch founder meetup before festival", "https://portolamusicfestival.com/"]
+];
+
+const YC_ACCESS = [
+  ["Founders Who Stayed dinner", "10-20", "$$$", "YC alumni who chose SF long-term", "Directly answers retention with credibility."],
+  ["10 Years Later salon", "40-80", "$$", "Alumni with families, communities, hobbies", "Reframes SF as a durable home."],
+  ["Adopt-a-Founder matching", "1:1 pods", "$-$$", "Alumni/operators willing to host check-ins", "Converts events into relationship infrastructure."],
+  ["Founder house crawl", "30-60", "$$", "Alumni homes across SF neighborhoods", "Shows startup life embedded in neighborhoods."],
+  ["Early employee dinners", "12-24", "$$$", "Early Stripe, Airbnb, DoorDash, Rippling, etc.", "Turns density into concrete stories."],
+  ["AI frontier operator visits", "10-20", "$-$$", "OpenAI, Anthropic, Databricks, Scale-type access", "Powerful but schedule-sensitive."],
+  ["Passport completion dinner", "30-80", "$$$", "Alumni guests and closing venue", "Rewards exploration and gives a post-batch reason to stay."],
+  ["100 Smart People salon", "80-150", "$$", "Alumni plus scientists, writers, builders", "Demonstrates intellectual density without pitches."]
+];
+
+const CALENDAR = [
+  ["Week 1", "Golden Gate Park founder + alumni picnic", "100-200", "Easy, welcoming batch kickoff."],
+  ["Week 2", "Mission murals + food tour", "30-50", "Split into pods with local guides."],
+  ["Week 3", "Founders Who Stayed dinners", "10-20/table", "Multiple dinners by sector or life stage."],
+  ["Week 4", "Wave Organ / Crissy sunset", "20-40", "Low-cost recurring ritual."],
+  ["Week 5", "Angel Island ferry + picnic", "25-60", "Include a low-hike alternate plan."],
+  ["Week 6", "Makerspace + arcade night", "30-60", "Supabase-coded builder signature."],
+  ["Week 7", "Chinatown night walk + banquet", "40-80", "Strong decompression and cross-cohort mixing."],
+  ["Demo Day", "Why We Stayed dinner", "40-80", "Alumni-heavy retention close, not investor-heavy."]
+];
+
+const CATEGORY_GALLERY_FALLBACKS = {
+  "YC Access": [
+    { url: "https://live.staticflickr.com/65535/53524858825_ce3ce3c1f1_b.jpg", caption: "Real founders' dinner room with candlelit tables", source: "Flickr / St Anne's College" },
+    { url: "https://cdn.prod.website-files.com/5fc64ac4a881e95acd1055c0/687f77a2a7ea3affc0899147__DSC5442.jpg", caption: "Small group toast around a shared table", source: "Merlijn" },
+    { url: "https://www.ycombinator.com/blog/content/images/2023/04/summerconf.png", caption: "YC founder event conversation format", source: "Y Combinator" }
+  ],
+  Community: [
+    { url: "https://s.hdnux.com/photos/01/43/76/62/26209414/7/rawImage.jpg", caption: "Golden Gate Park picnic gathering", source: "San Francisco Chronicle" },
+    { url: "https://live.staticflickr.com/7450/10011017905_4e583b0988_b.jpg", caption: "Bright San Francisco picnic spread with blankets", source: "Flickr / Markus Spiering" },
+    { url: "https://live.staticflickr.com/1541/25888739384_26f5d1712a_b.jpg", caption: "Conservatory of Flowers in Golden Gate Park", source: "Openverse / Flickr" }
+  ],
+  Nature: [
+    { url: "https://upload.wikimedia.org/wikipedia/commons/3/30/Angel_Island_%28California%29.jpg", caption: "Angel Island with Bay views", source: "Wikimedia Commons" },
+    { url: "https://www.nps.gov/goga/learn/historyculture/images/Lands-End-Labyrinth.png", caption: "Land's End labyrinth at sunset", source: "National Park Service" },
+    { url: "https://www.parksconservancy.org/sites/default/files/styles/card_2x/public/resource-gallery/OCBE_121021_FS_10_2x1_0.jpg.webp?itok=HeLYFz-q", caption: "Ocean Beach shoreline and surf", source: "Golden Gate National Parks Conservancy" }
+  ],
+  Culture: [
+    { url: "https://live.staticflickr.com/8475/8366012364_6045b70f71_b.jpg", caption: "Clarion Alley mural corridor in the Mission District", source: "Flickr / sswj" },
+    { url: "https://live.staticflickr.com/8733/28447344565_1d7e183d21_b.jpg", caption: "Minnesota Street Project gallery and studio hop", source: "Flickr" },
+    { url: "https://static.wixstatic.com/media/07f840_f4fa7893be7e4d9d9ac2702aa8a7db38~mv2.jpg", caption: "Litquake reading in a packed venue", source: "Litquake" }
+  ],
+  Dinner: [
+    { url: "https://cdn.prod.website-files.com/5fc64ac4a881e95acd1055c0/6874ef1fc4b182a4227fecb9__DSC7859.jpg", caption: "Family-style plates and wine in a cozy setting", source: "Merlijn" },
+    { url: "https://live.staticflickr.com/65535/49716314866_19ef1d29a7_b.jpg", caption: "Moody Bay Area supper-club room", source: "Flickr / Thomas Hawk" },
+    { url: "https://live.staticflickr.com/3895/14347291146_65e8e440f9_b.jpg", caption: "San Francisco courtyard party with long tables", source: "Flickr / SPUR" }
+  ],
+  Sponsor: [
+    { url: "https://images.squarespace-cdn.com/content/v1/60412e150e5c1277769df1a8/c50386ae-461b-402e-a091-55990af3ab7a/Tegan+and+Sara+pkp-0346185+%286%29.jpg?format=1500w", caption: "Reserved table seating at Stern Grove Festival", source: "Stern Grove Festival" },
+    { url: "https://hardlystrictlybluegrass.com/wp-content/uploads/2025/10/HSB25_Friday_Selects-9101.jpg", caption: "Hardly Strictly Bluegrass stage and crowd", source: "Hardly Strictly Bluegrass" },
+    { url: "https://fleetweeksf.org/wp-content/uploads/2025/01/BA-Golden-Gate-Bridge.jpg", caption: "Blue Angels over the Golden Gate Bridge", source: "San Francisco Fleet Week" }
+  ],
+  Builder: [
+    { url: "https://museemecanique.com/static/media/landing_0004_f.636cb665.jpg", caption: "Musée Mécanique vintage arcade floor", source: "Musée Mécanique" },
+    { url: "https://computerhistory.org/wp-content/uploads/2021/06/DEC_PDP-1_Demo_Lab_at_Mountain_Views_Computer_History_Museum-540x406-c-default.jpg", caption: "Computer History Museum demo lab", source: "Computer History Museum" },
+    { url: "https://ampf.stanford.edu/wp-content/uploads/2023/05/IMG_4716-2-1024x534.png", caption: "Stanford AMPF prototyping floor", source: "Stanford AMPF" }
+  ],
+  Water: [
+    { url: "https://upload.wikimedia.org/wikipedia/commons/8/89/Glorious_Sunset_over_the_Golden_Gate_Bridge_with_Alcatraz_Island_in_Shadow.jpg", caption: "Sunset sail with Golden Gate Bridge", source: "Wikimedia Commons" },
+    { url: "https://www.blazingsaddles.com/sites/default/files/styles/bike_category_banner/public/cover-images/2026-02/0128blazingsaddlesbridgeshoot-5_0.jpg?h=6c6dcce2&itok=svQEQUPk", caption: "Cycling the Golden Gate Bridge", source: "Blazing Saddles" },
+    { url: "https://live.staticflickr.com/7395/12461616355_3f5f875b57_b.jpg", caption: "Kayaking in Richardson Bay", source: "Flickr" }
+  ],
+  Food: [
+    { url: "https://offloadmedia.feverup.com/secretsanfrancisco.com/wp-content/uploads/2020/02/04092139/accionlatinasf--e1581687326796.jpg", caption: "Mission District murals and food tour", source: "Secret San Francisco" },
+    { url: "https://live.staticflickr.com/65535/32930792147_df59434490_b.jpg", caption: "Chinatown Grant Avenue lanterns at night", source: "Flickr" },
+    { url: "https://foodwise.org/wp-content/uploads/2026/01/Ferry_Plaza_FM_Photo_Logo_Foodwise.jpg", caption: "Ferry Building Farmers Market", source: "Foodwise" }
+  ],
+  Sports: [
+    { url: "https://www.sftourismtips.com/images/giants-oracle-july.jpg", caption: "Oracle Park waterfront baseball", source: "SF Tourism Tips" },
+    { url: "https://www.sftourismtips.com/images/warriors-march-sports.jpg", caption: "Warriors game at Chase Center", source: "SF Tourism Tips" },
+    { url: "https://leapsandcastleclassic.org/wp-content/uploads/2016/05/22643441870_f1f416a4d0_o-1024x683.jpg", caption: "Leap Sandcastle Classic competition", source: "Leap Arts in Education" }
+  ],
+  Wellness: [
+    { url: "https://images.squarespace-cdn.com/content/v1/6689abcbd4412e3dec1377be/2cf367ef-5d85-48ca-8299-1314ebc32f1d/IMG_5674.jpg", caption: "Golden Gate Running Club group run", source: "Golden Gate Running Club" },
+    { url: "https://movementgyms.com/app/uploads/sites/30/2025/12/rope-climbing_SFO_MVMT_2025_039-1600x1067.jpg", caption: "Movement SF climbing gym", source: "Movement San Francisco" },
+    { url: "https://wp.presidio.gov/wp-content/uploads/2025/07/Presidio_OM_Image-by-Hollero-1080px.jpg", caption: "Presidio meadow picnic with bridge views", source: "Presidio Trust" }
+  ],
+  Civic: [
+    { url: "https://www.parksconservancy.org/sites/default/files/styles/card_2x/public/resource-gallery/OCBE_20190921_RCW_3_2x1.jpg.webp?itok=IjdKQQL5", caption: "Coastal cleanup volunteer day", source: "Golden Gate National Parks Conservancy" },
+    { url: "https://sundaystreetssf.com/wp-content/uploads/2017/01/WEB_EX_GAMEROS_1057.jpg", caption: "Sunday Streets SF open-road activation", source: "Sunday Streets SF" },
+    { url: "https://images.squarespace-cdn.com/content/v1/66035432ff74660bfd13c29e/056a8945-e4ce-420d-a106-dfab47da4dd2/CrowdShots_3.jpg", caption: "Downtown First Thursdays founder crawl", source: "Downtown First Thursdays" }
+  ],
+  Play: [
+    { url: "https://www.inside-guide-to-san-francisco-tourism.com/images/seward-slides-top-view.jpg", caption: "Seward Street slides top view", source: "Inside Guide to SF" },
+    { url: "https://museemecanique.com/static/media/landing_0002_f.307a75b7.jpg", caption: "Visitors playing vintage arcade machines", source: "Musée Mécanique" },
+    { url: "https://palace-games.com/wp-content/uploads/2025/03/Attraction_Carousel_1.jpg", caption: "Palace Games immersive escape room", source: "Palace Games" }
+  ],
+  Passport: [
+    { url: "https://upload.wikimedia.org/wikipedia/commons/3/30/Angel_Island_%28California%29.jpg", caption: "Angel Island Bay Area discovery", source: "Wikimedia Commons" },
+    { url: "https://live.staticflickr.com/3910/14594555866_a50b5f765d_b.jpg", caption: "16th Avenue Tiled Steps urban discovery", source: "Flickr" },
+    { url: "https://upload.wikimedia.org/wikipedia/commons/f/fd/Golden_Gate_Bridge_from_Battery_Spencer.jpg", caption: "Golden Gate Bridge from Battery Spencer", source: "Wikimedia Commons" }
+  ]
+};
+
+function isSpecificImage(event, image) {
+  const caption = (image.caption || "").toLowerCase();
+  if (caption.includes("representative view")) return false;
+  const stop = new Set(["founder", "founders", "san", "francisco", "event", "with", "night", "group", "table", "tour", "walk"]);
+  const tokens = `${event.name} ${event.org} ${event.id}`
+    .toLowerCase()
+    .split(/[^a-z0-9]+/)
+    .filter(token => token.length > 4 && !stop.has(token));
+  return tokens.some(token => caption.includes(token));
+}
+
+function addUniqueGalleryImage(output, seen, image) {
+  if (!image || !image.url || seen.has(image.url)) return;
+  seen.add(image.url);
+  output.push(image);
+}
+
+function galleryFor(event) {
+  const gallery = (window.EVENT_GALLERIES && window.EVENT_GALLERIES[event.id]) || [];
+  return gallery.filter(item => item && item.url).slice(0, 4);
+}
+
+function descriptionFor(event) {
+  const special = {
+    "founders-stayed": "A private YC-alumni dinner in a quiet room or speakeasy, built around the question of when each guest could have left San Francisco and chose not to. The format is meant to surface concrete life decisions, not polished startup advice.",
+    "palace-games-attraction": "A 120-minute private escape room for 4-8 players at Palace Games in the Palace of Fine Arts, where a restored 1915 World's Fair attraction turns into a high-collaboration puzzle run. It is private-room only, team-oriented, and built for founders who like dense problem solving.",
+    "ggp-picnic": "A loose Golden Gate Park gathering with catering, alumni hosts, and open lawn time so founders can socialize without the event feeling overproduced. It is the easiest scalable tradition in the mix.",
+    "angel-island": "A ferry ride out to Angel Island followed by a summit hike and picnic with skyline views of San Francisco, Marin, and the Bay. The payoff is the 'this is actually close' reaction.",
+    "mission-murals": "A walking route through Mission District murals and taquerias, led by local guides so the neighborhood feels lived-in rather than curated for tourists. The mix of public art and food makes the city immediately legible.",
+    "chinatown-banquet": "A Chinatown night walk that ends with a banquet room meal, lazy Susan style, so the group moves from street-level discovery into shared-table conversation. It is especially strong for international founders.",
+    "stern-grove": "A reserved-table or founder-picnic setup around a free Stern Grove concert, using the park's amphitheater and summer programming as the backdrop. The value is the special access layer, not the ticket itself.",
+    "hardly-strictly": "A founder picnic on the edge of Hardly Strictly Bluegrass, using the park and free festival energy to create a community ritual without forcing branding into the middle of it. It works best as a civic-adjacent host layer.",
+    "exploratorium-after-dark": "A group night at the Exploratorium with drinks, wandering exhibits, and prompts that encourage people to talk about what surprised them. It is curiosity first, networking second."
+  };
+  if (special[event.id]) return special[event.id];
+
+  const categoryTemplates = {
+    "YC Access": `A small YC-alumni-driven event built around ${event.partnerPath.toLowerCase()}. It is meant to make the Bay Area feel personal and specific, not generic.`,
+    "Community": `A community-facing gathering centered on ${event.partnerPath.toLowerCase()}. The shape is casual enough to feel native, but structured enough to be memorable.`,
+    "Nature": `An outdoors-first outing that uses ${event.partnerPath.toLowerCase()} to show how quickly the Bay Area opens up once you leave the office. The event should end with food or a quiet pause.`,
+    "Water": `A Bay-focused outing built around ${event.partnerPath.toLowerCase()}. The water setting is the point: it makes the region feel like a place people actually live, not just work.`,
+    "Culture": `A culture-first event built around ${event.partnerPath.toLowerCase()}. It is designed to show that SF has depth beyond startup offices and customer meetings.`,
+    "Dinner": `A shared-table event built around ${event.partnerPath.toLowerCase()}. The point is to slow people down long enough for real conversation.`,
+    "Sponsor": `A special-access activation that layers founder hospitality on top of ${event.partnerPath.toLowerCase()}. It works best when Supabase is the host layer, not the headline.`,
+    "Builder": `A builder-minded outing built around ${event.partnerPath.toLowerCase()}. It should feel hands-on, collaborative, and a little nerdy in the best way.`,
+    "Sports": `A low-friction social event built around ${event.partnerPath.toLowerCase()}. The game or arena gives the group an easy shared reference point.`,
+    "Wellness": `A recovery-oriented event built around ${event.partnerPath.toLowerCase()}. The goal is to make founder life feel sustainable, not just intense.`,
+    "Civic": `A civic-facing event built around ${event.partnerPath.toLowerCase()}. It gives founders a reason to feel embedded in the city instead of only passing through it.`,
+    "Play": `A playful event built around ${event.partnerPath.toLowerCase()}. It should be light, tactile, and easy to remember afterwards.`,
+    "Passport": `A batch-long exploration program built around ${event.partnerPath.toLowerCase()}. It turns smaller outings into a larger retention ritual.`
   };
 
-  // --- DOM Elements ---
-  const eventsGrid = document.getElementById("events-grid");
-  const resultsCount = document.getElementById("results-count");
-  const statTotalEvents = document.getElementById("stat-total-events");
-  const searchBar = document.getElementById("search-bar");
-  const themeFiltersContainer = document.getElementById("theme-filters-container");
-  const topTierToggle = document.getElementById("top-tier-toggle");
-  const resetFiltersBtn = document.getElementById("reset-filters-btn");
-  
-  const timelineStepper = document.getElementById("timeline-stepper");
-  const eventDialog = document.getElementById("event-dialog");
-  
-  const comparisonDrawer = document.getElementById("comparison-drawer");
-  const compareCount = document.getElementById("compare-count");
-  const drawerToggleBtn = document.getElementById("drawer-toggle-btn");
-  const toggleIndicator = document.getElementById("toggle-indicator");
-  const toggleText = document.getElementById("toggle-text");
-  const comparisonTable = document.getElementById("comparison-table");
+  const base = categoryTemplates[event.category] || `An event built around ${event.partnerPath.toLowerCase()}.`;
+  const tail = event.bestFor ? `Best for ${event.bestFor.toLowerCase()}.` : "";
+  return `${base} ${tail}`.replace(/\s+/g, " ").trim();
+}
 
-  // Tab Elements
-  const tabButtons = document.querySelectorAll(".tab-btn");
-  const tabContents = document.querySelectorAll(".tab-content");
-  const principlesGrid = document.getElementById("principles-grid");
-  const notesGrid = document.getElementById("notes-grid");
+document.addEventListener("DOMContentLoaded", () => {
+  const state = {
+    query: "",
+    category: "All",
+    cost: "All",
+    time: "All",
+    audience: "All",
+    ycOnly: false,
+    sort: "priority"
+  };
 
-  // --- Initialize Application ---
-  function init() {
-    statTotalEvents.textContent = window.EVENTS_DATA.length;
-    renderThemeFilters();
-    renderTimeline();
-    renderPrinciplesAndNotes();
-    renderEvents();
-    setupEventListeners();
-  }
+  const categories = ["All", ...new Set(EVENT_CATALOG.map(event => event.category))];
+  const costs = ["All", "$", "$$", "$$$", "$$$$"];
+  const times = ["All", "Low", "Medium", "High"];
+  const audiences = ["All", "Small", "Medium", "Large"];
 
-  // --- Render Functions ---
+  const byId = id => document.getElementById(id);
+  const eventGrid = byId("event-grid");
 
-  // Sidebar theme checkboxes
-  function renderThemeFilters() {
-    themeFiltersContainer.innerHTML = "";
-    Object.values(window.THEMES).forEach(theme => {
-      const label = document.createElement("label");
-      label.className = "filter-checkbox-label";
-      label.innerHTML = `
-        <input type="checkbox" class="theme-filter" value="${theme.id}">
-        <span>${theme.icon} ${theme.name}</span>
-      `;
-      themeFiltersContainer.appendChild(label);
+  byId("total-events").textContent = EVENT_CATALOG.length;
+  byId("sponsor-count").textContent = SPONSOR_TARGETS.length;
+  byId("yc-count").textContent = YC_ACCESS.length;
+
+  function makeSegments(containerId, values, stateKey) {
+    const container = byId(containerId);
+    container.innerHTML = values.map(value => `
+      <button class="${state[stateKey] === value ? "active" : ""}" data-value="${value}" type="button">${value}</button>
+    `).join("");
+    container.addEventListener("click", event => {
+      const button = event.target.closest("button");
+      if (!button) return;
+      state[stateKey] = button.dataset.value;
+      render();
     });
   }
 
-  // Horizontal Stepper for YC Batch
-  function renderTimeline() {
-    timelineStepper.innerHTML = "";
-    window.WEEKLY_PROGRAM.forEach(program => {
-      const matchingEvent = window.EVENTS_DATA.find(e => e.id === program.eventId);
-      
-      const step = document.createElement("div");
-      step.className = "timeline-step";
-      step.innerHTML = `
-        <div>
-          <span class="week-badge">${program.week}</span>
-          <h3>${program.title}</h3>
-          <p>${program.description}</p>
-        </div>
-        <div class="focus-tag">${program.focus}</div>
-      `;
-      
-      step.addEventListener("click", () => {
-        // Deactivate all
-        document.querySelectorAll(".timeline-step").forEach(s => s.classList.remove("active"));
-        step.classList.add("active");
-        
-        // Open the detail dialog for matching event
-        if (matchingEvent) {
-          openDetailDialog(matchingEvent);
-        }
+  makeSegments("category-filters", categories, "category");
+  makeSegments("cost-filters", costs, "cost");
+  makeSegments("time-filters", times, "time");
+  makeSegments("audience-filters", audiences, "audience");
+
+  const filtersToggle = byId("filters-toggle");
+  const filterControls = byId("filter-controls");
+  filtersToggle.addEventListener("click", () => {
+    const willShow = filterControls.hidden;
+    filterControls.hidden = !willShow;
+    filtersToggle.setAttribute("aria-expanded", String(willShow));
+    filtersToggle.textContent = willShow ? "Less" : "More";
+  });
+
+  byId("search-input").addEventListener("input", event => {
+    state.query = event.target.value.toLowerCase().trim();
+    render();
+  });
+  byId("yc-toggle").addEventListener("change", event => {
+    state.ycOnly = event.target.checked;
+    render();
+  });
+  byId("sort-select").addEventListener("change", event => {
+    state.sort = event.target.value;
+    render();
+  });
+  byId("clear-filters").addEventListener("click", () => {
+    state.query = "";
+    state.category = "All";
+    state.cost = "All";
+    state.time = "All";
+    state.audience = "All";
+    state.ycOnly = false;
+    filterControls.hidden = true;
+    filtersToggle.setAttribute("aria-expanded", "false");
+    filtersToggle.textContent = "More";
+    byId("search-input").value = "";
+    byId("yc-toggle").checked = false;
+    render();
+  });
+
+  function filteredEvents() {
+    return EVENT_CATALOG
+      .filter(event => {
+        const haystack = `${event.name} ${event.category} ${event.org} ${event.partnerPath} ${event.assessment} ${event.bestFor}`.toLowerCase();
+        const audienceMatch = state.audience === "All" ||
+          (state.audience === "Small" && event.attendeeMin < 25) ||
+          (state.audience === "Medium" && event.attendeeMin >= 25 && event.attendeeMin < 75) ||
+          (state.audience === "Large" && event.attendeeMin >= 75);
+
+        const costMatch = state.cost === "All" || event.costRank === state.cost.length;
+
+        return (!state.query || haystack.includes(state.query)) &&
+          (state.category === "All" || event.category === state.category) &&
+          costMatch &&
+          (state.time === "All" || event.commitment === state.time) &&
+          audienceMatch &&
+          (!state.ycOnly || event.ycOnly);
+      })
+      .sort((a, b) => {
+        if (state.sort === "cost") return a.costRank - b.costRank || a.priority - b.priority;
+        if (state.sort === "attendees") return b.attendeeMin - a.attendeeMin;
+        if (state.sort === "time") return a.timeRank - b.timeRank || a.priority - b.priority;
+        return a.priority - b.priority;
       });
-      
-      timelineStepper.appendChild(step);
-    });
   }
 
-  // Principles and Notes lists
-  function renderPrinciplesAndNotes() {
-    // Principles
-    principlesGrid.innerHTML = "";
-    window.PRINCIPLES.forEach((principle, index) => {
-      const card = document.createElement("div");
-      card.className = "principle-card";
-      card.innerHTML = `
-        <h3><span>0${index + 1}.</span> ${principle.title}</h3>
-        <p><strong>Focus:</strong> ${principle.summary}</p>
-        <p>${principle.rationale}</p>
-        <div class="principle-example"><strong>Examples:</strong> ${principle.examples}</div>
-      `;
-      principlesGrid.appendChild(card);
-    });
-
-    // Notes
-    notesGrid.innerHTML = "";
-    const titles = {
-      accessibility: "♿ Accessibility & Inclusion",
-      transportation: "🚙 Transportation & Access",
-      cost: "💰 Cost Strategy",
-      measurement: "📈 Measurement & Impact"
-    };
-
-    Object.keys(window.IMPLEMENTATION_NOTES).forEach(key => {
-      const col = document.createElement("div");
-      col.className = "note-column";
-      
-      let listItems = "";
-      window.IMPLEMENTATION_NOTES[key].forEach(item => {
-        listItems += `<li>${item}</li>`;
+  function renderSegments() {
+    [["category-filters", "category"], ["cost-filters", "cost"], ["time-filters", "time"], ["audience-filters", "audience"]].forEach(([id, key]) => {
+      byId(id).querySelectorAll("button").forEach(button => {
+        button.classList.toggle("active", button.dataset.value === state[key]);
       });
-      
-      col.innerHTML = `
-        <h3>${titles[key] || key}</h3>
-        <ul>${listItems}</ul>
-      `;
-      notesGrid.appendChild(col);
     });
   }
 
-  // Render Event Card Grid
-  function renderEvents() {
-    eventsGrid.innerHTML = "";
-    
-    // Filter data
-    const filteredEvents = window.EVENTS_DATA.filter(event => {
-      // Search keywords match
-      const matchesSearch = 
-        event.name.toLowerCase().includes(state.searchQuery) ||
-        event.details.toLowerCase().includes(state.searchQuery) ||
-        (event.why && event.why.toLowerCase().includes(state.searchQuery)) ||
-        event.category.toLowerCase().includes(state.searchQuery);
-      
-      // Theme match
-      const matchesTheme = state.selectedThemes.length === 0 || state.selectedThemes.includes(event.theme);
-      
-      // Scale match
-      const matchesScale = state.selectedScales.length === 0 || state.selectedScales.some(s => event.scale.includes(s));
-      
-      // Impact match
-      const matchesImpact = state.selectedImpacts.length === 0 || state.selectedImpacts.includes(event.retention);
-      
-      // Top tier priority toggle
-      const matchesTopTier = !state.topTierOnly || event.isTopTier;
-      
-      return matchesSearch && matchesTheme && matchesScale && matchesImpact && matchesTopTier;
-    });
-
-    // Update Counter
-    resultsCount.textContent = `Showing ${filteredEvents.length} of ${window.EVENTS_DATA.length} events`;
-
-    // Render cards
-    if (filteredEvents.length === 0) {
-      eventsGrid.innerHTML = `
-        <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; border: 1px dashed var(--border-color); border-radius: 16px; color: var(--text-secondary);">
-          <p style="font-size: 1.1rem; margin-bottom: 0.5rem;">No matching events found</p>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">Try adjusting your filters or search keywords.</p>
-        </div>
-      `;
-      return;
-    }
-
-    filteredEvents.forEach(event => {
-      const wrapper = document.createElement("div");
-      wrapper.className = "event-card-wrapper";
-      
-      const themeData = window.THEMES[event.theme] || { icon: "📍" };
-      const isCompared = state.comparedEvents.some(e => e.id === event.id);
-      
-      wrapper.innerHTML = `
+  function renderCards(events) {
+    byId("result-count").textContent = `Showing ${events.length} of ${EVENT_CATALOG.length} events`;
+    eventGrid.innerHTML = events.map(event => {
+    const coverImage = event.image || FALLBACK_IMAGE;
+      return `
         <article class="event-card">
-          <div class="event-card-image">
-            ${event.isTopTier ? `<span class="event-card-tier-badge">⭐ Top Priority</span>` : ""}
-            <img src="${event.image}" alt="${event.name}" loading="lazy">
+          <div class="event-image">
+            <img src="${coverImage}" alt="${event.name}" loading="lazy" onerror="this.onerror=null;this.src='${FALLBACK_IMAGE}'">
+            <span>${event.category}</span>
           </div>
-          <div class="event-card-content">
-            <div class="event-card-tags">
-              <span class="tag-badge">${themeData.icon} ${themeData.name}</span>
-              <span class="tag-badge tag-scale">👥 Size: ${event.scale}</span>
-              <span class="tag-badge tag-retention">💎 Impact: ${event.retention}</span>
+          <div class="event-body">
+            <div class="event-topline">
+              <strong>${event.attendees}</strong>
+              <strong>${event.cost}</strong>
+              <strong>${event.time}</strong>
             </div>
-            <h3 class="event-card-title">${event.name}</h3>
-            <p class="event-card-description">${event.details}</p>
-            ${event.why ? `<div class="event-card-why">"${event.why}"</div>` : ""}
-            <div class="event-card-footer">
-              <button class="btn btn-primary btn-learn-more" data-id="${event.id}">Learn More</button>
-              <button class="btn btn-secondary btn-compare ${isCompared ? 'compared-active' : ''}" data-id="${event.id}">
-                ${isCompared ? "✓ Compared" : "Add Compare"}
-              </button>
+            <h3>${event.name}</h3>
+            <p>${descriptionFor(event)}</p>
+            <dl>
+              <div><dt>Partner path</dt><dd>${event.partnerPath}</dd></div>
+              <div><dt>Best for</dt><dd>${event.bestFor}</dd></div>
+            </dl>
+            <div class="card-actions">
+              <a class="primary-button link-button" href="${event.url}" target="_blank" rel="noopener noreferrer">Org info</a>
+              <button class="secondary-button detail-button" data-id="${event.id}" type="button">Details</button>
             </div>
           </div>
         </article>
       `;
-      
-      // Wire up card buttons
-      wrapper.querySelector(".btn-learn-more").addEventListener("click", () => openDetailDialog(event));
-      wrapper.querySelector(".btn-compare").addEventListener("click", (e) => toggleCompare(event, e.currentTarget));
-      
-      eventsGrid.appendChild(wrapper);
-    });
+    }).join("");
   }
 
-  // --- Dialogue Modal Detail View ---
-  function openDetailDialog(event) {
-    const themeData = window.THEMES[event.theme] || { icon: "📍", name: event.theme };
-    
-    eventDialog.innerHTML = `
-      <div class="dialog-header">
-        <img src="${event.image}" alt="${event.name}">
-        <button class="dialog-close" id="dialog-close-btn">&times;</button>
-      </div>
-      <div class="dialog-body">
-        <span class="dialog-theme-tag">${themeData.icon} ${themeData.name}</span>
-        <h3 class="dialog-title">${event.name}</h3>
-        
-        <div class="dialog-metadata-grid">
-          <div class="dialog-meta-item">
-            <span>Group Size Scale</span>
-            <strong>${event.scale}</strong>
-          </div>
-          <div class="dialog-meta-item">
-            <span>Retention Impact</span>
-            <strong>${event.retention}</strong>
-          </div>
+  function renderSponsorTargets() {
+    byId("sponsor-grid").innerHTML = SPONSOR_TARGETS.map(([name, timing, scale, angle, url]) => `
+      <article class="opportunity-card">
+        <h3>${name}</h3>
+        <p>${angle}</p>
+        <div class="mini-meta">
+          <span>${timing}</span>
+          <span>${scale}</span>
         </div>
+        <a href="${url}" target="_blank" rel="noopener noreferrer">Event org info</a>
+      </article>
+    `).join("");
+  }
 
+  function openDialog(event) {
+    const dialog = byId("event-dialog");
+    const coverImage = event.image || FALLBACK_IMAGE;
+    dialog.innerHTML = `
+      <div class="dialog-media"><img src="${coverImage}" alt="${event.name}" onerror="this.onerror=null;this.src='${FALLBACK_IMAGE}'"><button type="button" aria-label="Close">Close</button></div>
+      <div class="dialog-content">
+        <div class="event-topline"><strong>${event.attendees}</strong><strong>${event.cost}</strong><strong>${event.time}</strong><strong>${event.category}</strong></div>
+        <h2>${event.name}</h2>
+        <p>${descriptionFor(event)}</p>
         <div class="dialog-text-block">
-          <h4>Event Description</h4>
-          <p>${event.details}</p>
+          <h4>Strategic read</h4>
+          <p>${event.assessment}</p>
         </div>
-
-        ${event.why ? `
-          <div class="dialog-why-box">
-            <h4>Why It Works</h4>
-            <p>"${event.why}"</p>
-          </div>
-        ` : ""}
-
-        ${event.partner ? `
-          <div class="dialog-text-block">
-            <h4>Recommended Local Partners</h4>
-            <p>${event.partner}</p>
-          </div>
-        ` : ""}
-
-        ${event.activation ? `
-          <div class="dialog-text-block" style="border-top: 1px dashed var(--border-color); padding-top: 1rem;">
-            <h4 style="color: var(--accent-orange)">YC Activation Strategy</h4>
-            <p>${event.activation}</p>
-          </div>
-        ` : ""}
-
-        <div class="dialog-actions">
-          ${event.link ? `
-            <a href="${event.link}" target="_blank" class="btn btn-primary" rel="noopener noreferrer">
-              Visit Official Website &rarr;
-            </a>
-          ` : ""}
-          <button class="btn btn-secondary" id="dialog-close-action-btn">Close</button>
-        </div>
+        <dl>
+          <div><dt>Partner path</dt><dd>${event.partnerPath}</dd></div>
+          <div><dt>Best for</dt><dd>${event.bestFor}</dd></div>
+          <div><dt>YC-only access</dt><dd>${event.ycOnly ? "Yes - requires alumni/operator relationships" : "No - can be run with public partners"}</dd></div>
+        </dl>
+        <a class="primary-button" href="${event.url}" target="_blank" rel="noopener noreferrer">Open organization info</a>
       </div>
     `;
-
-    // Event handlers for closing
-    const closeBtn = eventDialog.querySelector("#dialog-close-btn");
-    const closeActionBtn = eventDialog.querySelector("#dialog-close-action-btn");
-    
-    const closeDialog = () => eventDialog.close();
-    closeBtn.addEventListener("click", closeDialog);
-    closeActionBtn.addEventListener("click", closeDialog);
-
-    eventDialog.showModal();
+    dialog.querySelector("button").addEventListener("click", () => dialog.close());
+    dialog.showModal();
   }
 
-  // --- Comparison State & UI Management ---
+  document.addEventListener("click", event => {
+    const detail = event.target.closest(".detail-button");
 
-  function toggleCompare(event, button) {
-    const index = state.comparedEvents.findIndex(e => e.id === event.id);
-    
-    if (index > -1) {
-      // Remove
-      state.comparedEvents.splice(index, 1);
-      button.classList.remove("compared-active");
-      button.textContent = "Add Compare";
-    } else {
-      // Add (limit to 3)
-      if (state.comparedEvents.length >= 3) {
-        alert("You can compare a maximum of 3 events side-by-side.");
-        return;
-      }
-      state.comparedEvents.push(event);
-      button.classList.add("compared-active");
-      button.textContent = "✓ Compared";
+    if (detail) {
+      openDialog(EVENT_CATALOG.find(item => item.id === detail.dataset.id));
     }
+  });
 
-    updateComparisonUI();
+  function render() {
+    renderSegments();
+    const events = filteredEvents();
+    renderCards(events);
   }
 
-  function updateComparisonUI() {
-    const count = state.comparedEvents.length;
-    compareCount.textContent = `${count} / 3 selected`;
-
-    if (count > 0) {
-      // Open drawer partially or expand
-      comparisonDrawer.classList.add("open");
-      renderComparisonTable();
-    } else {
-      comparisonDrawer.classList.remove("open");
-      state.drawerExpanded = false;
-      comparisonDrawer.style.transform = "translateY(100%)";
-    }
-  }
-
-  function renderComparisonTable() {
-    if (state.comparedEvents.length === 0) {
-      comparisonTable.innerHTML = "";
-      return;
-    }
-
-    // Build header row with images and delete buttons
-    let headerHtml = `<tr><th>Event Details</th>`;
-    state.comparedEvents.forEach(event => {
-      headerHtml += `
-        <td>
-          <div class="comparison-col-header">
-            <span>${event.name}</span>
-            <button class="remove-compare-btn" data-id="${event.id}">✖</button>
-          </div>
-        </td>
-      `;
-    });
-    headerHtml += `</tr>`;
-
-    // Theme row
-    let themeHtml = `<tr><th>Theme</th>`;
-    state.comparedEvents.forEach(event => {
-      const themeData = window.THEMES[event.theme] || { name: event.theme, icon: "📍" };
-      themeHtml += `<td>${themeData.icon} ${themeData.name}</td>`;
-    });
-    themeHtml += `</tr>`;
-
-    // Scale row
-    let scaleHtml = `<tr><th>Group Size</th>`;
-    state.comparedEvents.forEach(event => {
-      scaleHtml += `<td><strong>${event.scale}</strong></td>`;
-    });
-    scaleHtml += `</tr>`;
-
-    // Impact row
-    let impactHtml = `<tr><th>Retention Value</th>`;
-    state.comparedEvents.forEach(event => {
-      impactHtml += `<td><span style="color: var(--brand-emerald); font-weight: 600;">${event.retention}</span></td>`;
-    });
-    impactHtml += `</tr>`;
-
-    // Why row
-    let whyHtml = `<tr><th>Core Philosophy</th>`;
-    state.comparedEvents.forEach(event => {
-      whyHtml += `<td><em style="font-size: 0.85rem; color: var(--text-secondary);">${event.why || 'Curated Bay Area experience.'}</em></td>`;
-    });
-    whyHtml += `</tr>`;
-
-    // Partner row
-    let partnerHtml = `<tr><th>Partner Options</th>`;
-    state.comparedEvents.forEach(event => {
-      partnerHtml += `<td><span style="font-size: 0.85rem;">${event.partner || 'Local neighborhoods, public spaces.'}</span></td>`;
-    });
-    partnerHtml += `</tr>`;
-
-    // Links row
-    let linksHtml = `<tr><th>Links</th>`;
-    state.comparedEvents.forEach(event => {
-      linksHtml += `
-        <td>
-          ${event.link ? `<a href="${event.link}" target="_blank" class="nav-link active" style="display:inline-block; font-size:0.8rem; text-align:center;" rel="noopener noreferrer">Visit Site</a>` : '<span style="color:var(--text-muted)">None</span>'}
-        </td>
-      `;
-    });
-    linksHtml += `</tr>`;
-
-    comparisonTable.innerHTML = headerHtml + themeHtml + scaleHtml + impactHtml + whyHtml + partnerHtml + linksHtml;
-
-    // Wire up delete buttons inside table
-    comparisonTable.querySelectorAll(".remove-compare-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const id = btn.getAttribute("data-id");
-        const event = window.EVENTS_DATA.find(e => e.id === id);
-        if (event) {
-          // Un-highlight corresponding card button
-          const gridCompareBtn = document.querySelector(`.btn-compare[data-id="${id}"]`);
-          toggleCompare(event, gridCompareBtn);
-        }
-      });
-    });
-  }
-
-  // Toggle bottom drawer collapse/expanded states
-  function toggleDrawer() {
-    state.drawerExpanded = !state.drawerExpanded;
-    if (state.drawerExpanded) {
-      comparisonDrawer.style.transform = "translateY(0)";
-      toggleIndicator.textContent = "▼";
-      toggleText.textContent = "Hide Comparison";
-    } else {
-      // Slide down so only header is visible
-      const headerHeight = document.querySelector(".drawer-header").offsetHeight;
-      comparisonDrawer.style.transform = `translateY(calc(100% - ${headerHeight}px))`;
-      toggleIndicator.textContent = "▲";
-      toggleText.textContent = "Show Comparison";
-    }
-  }
-
-  // --- Setting Up Event Listeners ---
-  function setupEventListeners() {
-    // Search Bar Input
-    searchBar.addEventListener("input", (e) => {
-      state.searchQuery = e.target.value.toLowerCase().trim();
-      renderEvents();
-    });
-
-    // Theme Checkboxes
-    themeFiltersContainer.addEventListener("change", (e) => {
-      if (e.target.classList.contains("theme-filter")) {
-        const value = e.target.value;
-        if (e.target.checked) {
-          state.selectedThemes.push(value);
-        } else {
-          state.selectedThemes = state.selectedThemes.filter(t => t !== value);
-        }
-        renderEvents();
-      }
-    });
-
-    // Scale Checkboxes
-    document.querySelectorAll(".scale-filter").forEach(cb => {
-      cb.addEventListener("change", () => {
-        state.selectedScales = Array.from(document.querySelectorAll(".scale-filter:checked")).map(el => el.value);
-        renderEvents();
-      });
-    });
-
-    // Impact Checkboxes
-    document.querySelectorAll(".impact-filter").forEach(cb => {
-      cb.addEventListener("change", () => {
-        state.selectedImpacts = Array.from(document.querySelectorAll(".impact-filter:checked")).map(el => el.value);
-        renderEvents();
-      });
-    });
-
-    // Top Tier toggle
-    topTierToggle.addEventListener("change", (e) => {
-      state.topTierOnly = e.target.checked;
-      renderEvents();
-    });
-
-    // Reset Filters button
-    resetFiltersBtn.addEventListener("click", () => {
-      // Clear inputs
-      searchBar.value = "";
-      state.searchQuery = "";
-      
-      document.querySelectorAll(".theme-filter, .scale-filter, .impact-filter").forEach(cb => {
-        cb.checked = false;
-      });
-      topTierToggle.checked = false;
-
-      state.selectedThemes = [];
-      state.selectedScales = [];
-      state.selectedImpacts = [];
-      state.topTierOnly = false;
-      
-      renderEvents();
-    });
-
-    // Drawer toggler
-    drawerToggleBtn.addEventListener("click", toggleDrawer);
-
-    // Tab buttons handler
-    tabButtons.forEach(btn => {
-      btn.addEventListener("click", () => {
-        tabButtons.forEach(b => b.classList.remove("active"));
-        tabContents.forEach(c => c.classList.remove("active"));
-        
-        btn.classList.add("active");
-        const tabId = btn.getAttribute("data-tab");
-        document.getElementById(tabId).classList.add("active");
-      });
-    });
-
-    // Nav bar active link helper
-    document.querySelectorAll(".nav-link").forEach(link => {
-      link.addEventListener("click", (e) => {
-        document.querySelectorAll(".nav-link").forEach(l => l.classList.remove("active"));
-        link.classList.add("active");
-      });
-    });
-  }
-
-  // Boot
-  init();
+  renderSponsorTargets();
+  render();
 });

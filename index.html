@@ -3,228 +3,115 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YC Founder Bay Area Retention Portal</title>
-  <meta name="description" content="Organize, display, and compare YC founder retention event ideas in San Francisco. Grouped by core themes, features automated comparison dashboard and custom scheduler.">
-  <link rel="stylesheet" href="./styles.css">
+  <title>SF Founder Event Desk</title>
+  <meta name="description" content="Compare SF founder-retention event ideas by attendees, category, cost, time commitment, partner path, and YC access.">
+  <link rel="stylesheet" href="./styles.css?v=20260706p">
 </head>
 <body>
-
-  <!-- App Header -->
-  <header class="app-header">
-    <div class="container header-content">
-      <div class="logo">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M19 11h-6V3l-9 10h6v8l9-10z"/>
-        </svg>
-        <span>Retention Hub</span>
-      </div>
-      <nav class="nav-links">
-        <a href="#timeline" class="nav-link">Batch Timeline</a>
-        <a href="#explorer" class="nav-link active" id="nav-explorer-link">Event Explorer</a>
-        <a href="#principles" class="nav-link">Design Principles</a>
-      </nav>
-    </div>
+  <header class="site-header">
+    <a href="#" class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32"><path d="M6 25 16 5l10 20H6Zm5.2-3h9.6L16 12.4 11.2 22Z"/><path d="M4 27h24v2H4z"/></svg>
+      </span>
+      <span>SF Founder Event Desk</span>
+    </a>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero-section">
-    <div class="hero-overlay"></div>
-    <div class="container hero-content">
-      <div class="hero-tag">YC Bay Area Event Strategy</div>
-      <h1 class="hero-title">Experience the <span>Bay Area</span> is Where You Belong</h1>
-      <p class="hero-desc">
-        A structured catalog of retention events designed to widen the lens of YC founders. Move beyond the desk and experience the density, nature, and community that makes SF an irreplaceable home.
-      </p>
-      
-      <!-- Quick Stats -->
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-number" id="stat-total-events">30</div>
-          <div class="stat-label">Event Ideas</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">12</div>
-          <div class="stat-label">Top-Tier Priority</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">10</div>
-          <div class="stat-label">Core Themes</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">5</div>
-          <div class="stat-label">Retention Pillars</div>
+  <main>
+    <section id="compare" class="hero-desk">
+      <div class="hero-copy">
+        <h1>SF is for founders.</h1>
+        <div class="hero-meta" aria-label="Program summary">
+          <span><strong id="total-events">0</strong> event concepts</span>
+          <span><strong id="sponsor-count">0</strong> sponsor targets</span>
+          <span><strong id="yc-count">0</strong> YC-only ideas</span>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Timeline Stepper Section -->
-  <section id="timeline" class="timeline-section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Recommended Batch Timeline</h2>
-        <p>A layered experience scheduled across the 8-week batch and post-Demo Day period</p>
-      </div>
-      <div class="timeline-wrapper" id="timeline-stepper">
-        <!-- Rendered dynamically by JS -->
-      </div>
-    </div>
-  </section>
-
-  <!-- Event Explorer & Filter Grid -->
-  <section id="explorer" class="container" style="padding-block: 4rem;">
-    <div class="section-header">
-      <h2>Explore Event Concepts</h2>
-      <p>Filter, search, and details-inspect curated retention events</p>
-    </div>
-    
-    <div class="explorer-layout">
-      <!-- Sidebar Filters -->
-      <aside class="filters-sidebar">
-        <!-- Search -->
-        <div class="filter-group">
-          <div class="filter-title">Search</div>
-          <div class="search-input-wrapper">
-            <svg class="search-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
-            </svg>
-            <input type="text" id="search-bar" class="search-input" placeholder="Search events, tags, spots...">
-          </div>
-        </div>
-        
-        <!-- Themes Filter -->
-        <div class="filter-group">
-          <div class="filter-title">Themes</div>
-          <div class="filter-btn-grid" id="theme-filters-container">
-            <!-- Dynamically populated checkbox list -->
+      <aside class="control-panel" aria-label="Event filters">
+        <div class="panel-title-row">
+          <h2>Filters</h2>
+          <div class="panel-actions">
+            <button id="filters-toggle" class="ghost-button" type="button" aria-expanded="false" aria-controls="filter-controls">More</button>
+            <button id="clear-filters" class="ghost-button" type="button">Clear</button>
           </div>
         </div>
 
-        <!-- Scale (Size) Filter -->
-        <div class="filter-group">
-          <div class="filter-title">Scale / Size</div>
-          <div class="filter-btn-grid">
-            <label class="filter-checkbox-label">
-              <input type="checkbox" class="scale-filter" value="Small"> Small (4-20)
-            </label>
-            <label class="filter-checkbox-label">
-              <input type="checkbox" class="scale-filter" value="Medium"> Medium
-            </label>
-            <label class="filter-checkbox-label">
-              <input type="checkbox" class="scale-filter" value="Large"> Large (Community)
-            </label>
+        <label class="search-box">
+          <span>Search events</span>
+          <input id="search-input" type="search" placeholder="Try Stern Grove, alumni, ferry, food...">
+        </label>
+
+        <div id="filter-controls" class="advanced-filters" hidden>
+          <div class="filter-grid">
+            <fieldset>
+              <legend>Category</legend>
+              <div id="category-filters" class="segmented"></div>
+            </fieldset>
+            <fieldset>
+              <legend>Cost</legend>
+              <div id="cost-filters" class="segmented"></div>
+            </fieldset>
+            <fieldset>
+              <legend>Time</legend>
+              <div id="time-filters" class="segmented"></div>
+            </fieldset>
+            <fieldset>
+              <legend>Audience</legend>
+              <div id="audience-filters" class="segmented"></div>
+            </fieldset>
           </div>
         </div>
 
-        <!-- Impact Filter -->
-        <div class="filter-group">
-          <div class="filter-title">Retention Impact</div>
-          <div class="filter-btn-grid">
-            <label class="filter-checkbox-label">
-              <input type="checkbox" class="impact-filter" value="Extremely High"> Extremely High
-            </label>
-            <label class="filter-checkbox-label">
-              <input type="checkbox" class="impact-filter" value="Very High"> Very High
-            </label>
-            <label class="filter-checkbox-label">
-              <input type="checkbox" class="impact-filter" value="High"> High
-            </label>
-          </div>
-        </div>
-
-        <!-- Top tier filter toggle -->
-        <div class="filter-group">
-          <label class="filter-checkbox-label" style="font-weight: 700;">
-            <input type="checkbox" id="top-tier-toggle"> ⭐ Top-Tier Priority Only
+        <div class="compact-toggles">
+          <label class="toggle-row">
+            <input id="yc-toggle" type="checkbox">
+            <span>YC alumni access</span>
           </label>
         </div>
-
-        <button class="reset-filters-btn" id="reset-filters-btn">Clear All Filters</button>
       </aside>
+    </section>
 
-      <!-- Main Display Cards -->
-      <main class="cards-grid-container">
-        <div class="explorer-header-stats">
-          <span id="results-count">Showing 30 events</span>
+    <section class="desk-section">
+      <div class="section-heading">
+        <div>
+          <h2>Event Shortlist</h2>
+          <p id="result-count">Showing events</p>
         </div>
-        <div class="cards-grid" id="events-grid">
-          <!-- Populated dynamically -->
-        </div>
-      </main>
-    </div>
-  </section>
-
-  <!-- Interactive Modal Dialog -->
-  <dialog id="event-dialog" class="details-dialog">
-    <!-- Populated dynamically on opening -->
-  </dialog>
-
-  <!-- Floating Bottom Comparison Drawer -->
-  <section class="comparison-drawer" id="comparison-drawer">
-    <div class="drawer-header">
-      <div class="drawer-header-left">
-        <span class="drawer-title">Event Comparison Desk</span>
-        <span class="drawer-count" id="compare-count">0 / 3 selected</span>
-      </div>
-      <div class="drawer-actions">
-        <button class="drawer-toggle-btn" id="drawer-toggle-btn">
-          <span id="toggle-indicator">▲</span> <span id="toggle-text">Show Comparison</span>
-        </button>
-      </div>
-    </div>
-    <div class="comparison-grid-wrapper">
-      <table class="comparison-table" id="comparison-table">
-        <!-- Structured tables populated dynamically -->
-      </table>
-    </div>
-  </section>
-
-  <!-- Event Design Principles & Implementation Notes -->
-  <section id="principles" class="principles-section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Principles & Guidelines</h2>
-        <p>Strategic mechanics to turn outing events into long-term traditions</p>
-      </div>
-
-      <div class="tabs-wrapper">
-        <div class="tabs-header">
-          <button class="tab-btn active" data-tab="tab-principles">Event Design Principles</button>
-          <button class="tab-btn" data-tab="tab-implementation">Implementation Notes</button>
-        </div>
-        
-        <!-- Tab 1: Principles -->
-        <div class="tab-content active" id="tab-principles">
-          <div class="principles-grid" id="principles-grid">
-            <!-- Dynamically populated -->
-          </div>
-        </div>
-
-        <!-- Tab 2: Implementation -->
-        <div class="tab-content" id="tab-implementation">
-          <div class="notes-grid" id="notes-grid">
-            <!-- Dynamically populated -->
-          </div>
+        <div class="sort-control">
+          <label for="sort-select">Sort</label>
+          <select id="sort-select">
+            <option value="priority">Priority</option>
+            <option value="cost">Cost</option>
+            <option value="attendees">Attendees</option>
+            <option value="time">Time</option>
+          </select>
         </div>
       </div>
-    </div>
-  </section>
+      <div id="event-grid" class="event-grid"></div>
+    </section>
 
-  <!-- Footer -->
-  <footer class="app-footer">
-    <div class="container">
-      <div class="footer-logo">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M19 11h-6V3l-9 10h6v8l9-10z"/>
-        </svg>
-        <span>Retention Hub</span>
+
+    <section id="sponsor-targets" class="desk-section">
+      <div class="section-heading">
+        <div>
+          <h2>Existing SF Events to Sponsor or Partner With</h2>
+          <p>Public city events where Supabase could add founder hospitality, special access, or after-event programming.</p>
+        </div>
       </div>
-      <p>YC Founder Bay Area Retention Event Strategy Brochure</p>
-      <p style="margin-top: 0.5rem; opacity: 0.6; font-size: 0.75rem;">Build with vanilla CSS and JS. Inspired by Supabase design system.</p>
-    </div>
+      <div id="sponsor-grid" class="opportunity-grid"></div>
+    </section>
+
+  </main>
+
+  <dialog id="event-dialog" class="event-dialog"></dialog>
+
+  <footer class="site-footer">
+    <p>Built from the July 6, 2026 marketing brief. Verify dates and inventory with event organizers before outreach.</p>
   </footer>
 
-  <script src="./events-data.js"></script>
-  <script src="./app.js"></script>
+  <script src="./events-data.js?v=20260706p"></script>
+  <script src="./galleries-data.js?v=20260706p"></script>
+  <script src="./app.js?v=20260706p"></script>
 </body>
 </html>
