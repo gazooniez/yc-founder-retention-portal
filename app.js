@@ -14,7 +14,7 @@ const EVENT_CATALOG = [
     commitment: "Low",
     priority: 1,
     ycOnly: true,
-    image: "./SF-founder-event-images/founders-stayed/01-Real-founders-dinner-room-with-candlelit-tables-and-seated-guests.jpg",
+    image: "./SF-founder-event-images/founders-stayed/02-Small-group-toast-around-a-shared-table.jpg",
     org: "Y Combinator",
     url: "https://www.ycombinator.com/",
     partnerPath: "YC alumni curation, private dining room, strong moderator",

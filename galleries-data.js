@@ -1,7 +1,7 @@
 window.EVENT_GALLERIES = {
   "founders-stayed": [
     {
-      "url": "./SF-founder-event-images/founders-stayed/01-Real-founders-dinner-room-with-candlelit-tables-and-seated-guests.jpg",
+      "url": "./SF-founder-event-images/founders-stayed/02-Small-group-toast-around-a-shared-table.jpg",
       "caption": "Real founders' dinner room with candlelit tables and seated guests",
       "source": "Flickr / St Anne's College",
     },
