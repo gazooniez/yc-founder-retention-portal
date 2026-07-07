@@ -309,7 +309,7 @@ window.EVENT_GALLERIES = {
   ],
   "ai-frontier-visits": [
     {
-      "url": "./SF-founder-event-images/ai-frontier-visits/01-YC-founder-event-conversation-format-with-students-and-builders.png",
+      "url": "./SF-founder-event-images/ai-frontier-visits/03-Technical-founder-speaker-reference-for-an-intimate-Q-A.jpg",
       "caption": "YC founder event conversation format with students and builders",
       "source": "Y Combinator",
     },

@@ -294,7 +294,7 @@ const EVENT_CATALOG = [
     commitment: "Low",
     priority: 15,
     ycOnly: true,
-    image: "./SF-founder-event-images/ai-frontier-visits/01-YC-founder-event-conversation-format-with-students-and-builders.png",
+    image: "./SF-founder-event-images/ai-frontier-visits/03-Technical-founder-speaker-reference-for-an-intimate-Q-A.jpg",
     org: "Frontier AI companies",
     url: "https://www.ycombinator.com/companies",
     partnerPath: "Small-group operator host, no recruiting deck, off-record Q&A",
