@@ -463,7 +463,7 @@ window.EVENT_GALLERIES = {
   ],
   "marin-headlands": [
     {
-      "url": "./SF-founder-event-images/marin-headlands/images.jpg",
+      "url": "./SF-founder-event-images/marin-headlands/marin-headlands.jpeg",
       "caption": "Marin Headlands coastal view toward the Golden Gate",
       "source": "National Park Service",
     },

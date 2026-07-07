@@ -434,7 +434,7 @@ const EVENT_CATALOG = [
     commitment: "High",
     priority: 22,
     ycOnly: false,
-    image: "./SF-founder-event-images/marin-headlands/images.jpg",
+    image: "./SF-founder-event-images/marin-headlands/marin-headlands.jpeg",
     org: "Golden Gate National Recreation Area",
     url: "https://www.nps.gov/goga/marin-headlands.htm",
     partnerPath: "Shuttle, route guide, seafood lunch reservation, low-hike view stop",
