@@ -414,7 +414,7 @@ const EVENT_CATALOG = [
     commitment: "Medium",
     priority: 21,
     ycOnly: false,
-    image: "./SF-founder-event-images/presidio-forest/01-Rob-Hill-forest-setting-for-a-quiet-guided-walk.jpg",
+    image: "./SF-founder-event-images/presidio-forest/03-Presidio-Tunnel-Tops-landscape-for-a-polished-picnic-stop.jpg",
     org: "Presidio Trust",
     url: "https://presidio.gov/",
     partnerPath: "Guide, quiet walking route, catered picnic on the Main Parade Ground",

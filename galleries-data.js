@@ -441,7 +441,7 @@ window.EVENT_GALLERIES = {
   ],
   "presidio-forest": [
     {
-      "url": "./SF-founder-event-images/presidio-forest/01-Rob-Hill-forest-setting-for-a-quiet-guided-walk.jpg",
+      "url": "./SF-founder-event-images/presidio-forest/03-Presidio-Tunnel-Tops-landscape-for-a-polished-picnic-stop.jpg",
       "caption": "Rob Hill forest setting for a quiet guided walk",
       "source": "Presidio Trust",
     },
