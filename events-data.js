@@ -79,7 +79,7 @@ window.EVENTS_DATA = [
     why: "This is one of the strongest 'I can't believe this is so close' experiences. Hiking to the summit and picnicking with 360-degree views of SF, Marin, Alcatraz, and the bridges builds instant awe and emotional attachment.",
     details: "Take the ferry from the historic SF Ferry Building, hike up Mt. Livermore, and share a summit picnic looking over the entire Bay Area.",
     link: "https://www.parks.ca.gov/?page_id=468",
-    image: "https://upload.wikimedia.org/wikipedia/commons/7/72/Ayala_Cove_Ferry_Terminal_on_Angel_Island_in_the_San_Francisco_Bay.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/thumb/7/72/Angel_Island_sunset_view.jpg/1280px-Angel_Island_sunset_view.jpg",
     partner: "Angel Island Ferry Services, Golden Gate National Parks Conservancy"
   },
   {
@@ -93,7 +93,7 @@ window.EVENTS_DATA = [
     why: "Directly addresses the retention question. Small dinners bypass generic startup advice and focus on the lived value of staying. Prompt: 'At what point could you have left the Bay Area, and why didn't you?'",
     details: "Small, intimate dinners mixing current batch founders with successful YC alumni who explicitly chose to make San Francisco their permanent home.",
     link: "https://www.ycombinator.com",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/thumb/8/8e/San_Francisco_speakeasy_bar.jpg/1280px-San_Francisco_speakeasy_bar.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/thumb/8/8e/San_Francisco_intimate_dinner.jpg/1280px-San_Francisco_intimate_dinner.jpg",
     partner: "Local culinary chefs, private speakeasy venues"
   },
   {
@@ -107,7 +107,7 @@ window.EVENTS_DATA = [
     why: "Combines active teamwork, friendly competition, water, skyline views, and a premium social winery setting. Highly memorable and difficult to replicate in any other global startup hub.",
     details: "Charter small sailboats for a guided, friendly regatta around Treasure Island, then dock for a private tasting session at a local urban winery with views of the Bay Bridge.",
     link: "https://www.treasureislandwinery.com",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/thumb/8/89/Sailing_on_San_Francisco_Bay.jpg/1280px-Sailing_on_San_Francisco_Bay.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/thumb/8/89/San_Francisco_Bay_sailboat_evening.jpg/1280px-San_Francisco_Bay_sailboat_evening.jpg",
     partner: "SF Bay Sailing Charters, Treasure Island Wines"
   },
   {
@@ -296,7 +296,7 @@ window.EVENTS_DATA = [
     retention: "Very High",
     why: "Demonstrates the intellectual density of the region without requiring pitches, panels, or investor theater. Guests share raw, interesting ideas directly.",
     details: "A curated evening salon where each guest has 3 minutes to share one deeply interesting thing they learned or built in the last six months.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Conversation_at_a_dinner_table.jpg/1280px-Conversation_at_a_dinner_table.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/San_Francisco_dinner_party.jpg/1280px-San_Francisco_dinner_party.jpg"
   },
   {
     id: "random-walk-dinners",
@@ -307,7 +307,7 @@ window.EVENTS_DATA = [
     retention: "High",
     why: "Many people fall in love with SF due to unexpected interdisciplinary conversations. This format manufactures high-quality serendipity outside the tech bubble.",
     details: "Small-group dinners matching YC founders with local SF scientists, designers, writers, artists, chefs, and product creators based on shared interests.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/thumb/8/8e/San_Francisco_speakeasy_bar.jpg/1280px-San_Francisco_speakeasy_bar.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/thumb/8/8e/San_Francisco_restaurant_group_dinner.jpg/1280px-San_Francisco_restaurant_group_dinner.jpg"
   },
   {
     id: "lands-end-hike",
@@ -364,7 +364,7 @@ window.EVENTS_DATA = [
     retention: "High",
     why: "Premium, intimate, and uniquely local. Navigating the Bay under sails with views of Alcatraz and the Golden Gate at dusk is unforgettable.",
     details: "Charter a premium catamaran or sailboat for a sunset cruise on the SF Bay, complete with wine, local cheese, and city lights.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/thumb/8/89/Sailing_on_San_Francisco_Bay.jpg/1280px-Sailing_on_San_Francisco_Bay.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/thumb/8/89/San_Francisco_Bay_sailing_at_dusk.jpg/1280px-San_Francisco_Bay_sailing_at_dusk.jpg"
   },
   {
     id: "gg-bridge-bike-ride",
@@ -553,7 +553,7 @@ window.EVENTS_DATA = [
     retention: "Extremely High",
     why: "A powerful capstone experience because it directly connects personal lifestyle design, housing choices, routines, and community with the decision to stay.",
     details: "A structured, small-group workshop where founders choose from nature, food, neighborhoods, and wellness options to map out their future life in the Bay Area.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Conversation_at_a_dinner_table.jpg/1280px-Conversation_at_a_dinner_table.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/thumb/3/3f/San_Francisco_workshop_discussion.jpg/1280px-San_Francisco_workshop_discussion.jpg"
   },
   {
     id: "bay-area-passport",
@@ -564,7 +564,7 @@ window.EVENTS_DATA = [
     retention: "Very High",
     why: "Turns regional discovery and retention into an ongoing adventure, giving founders points and physical stamps for exploring parks, museums, and food scenes.",
     details: "A structured, batch-long physical passport. Complete items (like a redwoods hike, CHM visit, sailing, and a food crawl) to unlock a post-batch dinner.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/7/72/Ayala_Cove_Ferry_Terminal_on_Angel_Island_in_the_San_Francisco_Bay.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/thumb/7/72/Angel_Island_hike_view.jpg/1280px-Angel_Island_hike_view.jpg"
   }
 ];
 
