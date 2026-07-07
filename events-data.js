@@ -135,7 +135,7 @@ window.EVENTS_DATA = [
     why: "Creates a low-pressure, welcoming environment where founders can see that San Francisco is not just an accelerator location, but an active, ongoing, multigenerational community. Scalable and tradition-friendly.",
     details: "A large, casual, catered afternoon picnic in Golden Gate Park (near Hellman Hollow or Lindley Meadow) with current YC batches, alumni, investors, and local builders.",
     link: "https://sfrecpark.org/734/Golden-Gate-Park",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Hellman_Hollow_Golden_Gate_Park.jpg/1280px-Hellman_Hollow_Golden_Gate_Park.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/thumb/5/5a/Golden_Gate_Park_picnic_area.jpg/1280px-Golden_Gate_Park_picnic_area.jpg",
     partner: "Bi-Rite Catering, SF Rec & Parks"
   },
   {
@@ -260,7 +260,7 @@ window.EVENTS_DATA = [
     why: "Pairs the raw, hands-on physical act of building with a highly communal, shared-platter Yemeni dinner. Breaks down formal networking barriers.",
     details: "Tour an active hardware prototyping laboratory in SoMa, followed by a shared communal feast at a local Yemeni restaurant like Mandi House.",
     link: "https://www.mandihousesf.com",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Middle_Eastern_restaurant_San_Francisco.jpg/1280px-Middle_Eastern_restaurant_San_Francisco.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/thumb/5/5d/San_Francisco_middle_eastern_feast.jpg/1280px-San_Francisco_middle_eastern_feast.jpg",
     partner: "Soma Prototyping Labs, Mandi House"
   },
   {
@@ -353,7 +353,7 @@ window.EVENTS_DATA = [
     retention: "Medium",
     why: "Gives founders the magical feeling of discovering a secret SF. A dense, misty eucalyptus forest hidden directly in the center of the city.",
     details: "Hike the historic interior trails of Mount Sutro, exploring the cloud forest and foggy peaks, feeling miles away from any urban core.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Mount_Sutro_trail_San_Francisco.jpg/1280px-Mount_Sutro_trail_San_Francisco.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/thumb/6/6e/Mount_Sutro_hike_San_Francisco.jpg/1280px-Mount_Sutro_hike_San_Francisco.jpg"
   },
   {
     id: "sunset-bay-sail",
@@ -364,7 +364,7 @@ window.EVENTS_DATA = [
     retention: "High",
     why: "Premium, intimate, and uniquely local. Navigating the Bay under sails with views of Alcatraz and the Golden Gate at dusk is unforgettable.",
     details: "Charter a premium catamaran or sailboat for a sunset cruise on the SF Bay, complete with wine, local cheese, and city lights.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/San_Francisco_Bay_sailing_at_dusk.jpg/1280px-San_Francisco_Bay_sailing_at_dusk.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/thumb/8/89/San_Francisco_Bay_sunset_sail.jpg/1280px-San_Francisco_Bay_sunset_sail.jpg"
   },
   {
     id: "gg-bridge-bike-ride",
@@ -386,7 +386,7 @@ window.EVENTS_DATA = [
     retention: "Medium",
     why: "An active, physical outdoor break from screens. Kayaking past houseboats and seals with city and bridge views provides high mental restoration.",
     details: "A guided paddleboarding and kayaking session in Richardson Bay, Sausalito, with close-up views of the waterfront and Mt. Tamalpais.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Richardson_Bay_kayak.jpg/1280px-Richardson_Bay_kayak.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/thumb/9/9e/Richardson_Bay_paddleboarding.jpg/1280px-Richardson_Bay_paddleboarding.jpg"
   },
   {
     id: "japantown-food-immersion",
@@ -444,7 +444,7 @@ window.EVENTS_DATA = [
     why: "Creates pure childlike joy and a highly memorable decompression moment. Sliding down steep concrete shoots on cardboard is uniquely SF.",
     details: "Grab a sheet of cardboard and join other founders to slide down the steep, historic concrete slides tucked away in a neighborhood pocket park.",
     link: "https://sfrecpark.org/destination/seward-street-slides/",
-    image: "https://foundsf.org/images/thumb/1/1b/Seward_Street_Slides_San_Francisco.jpg/1280px-Seward_Street_Slides_San_Francisco.jpg"
+    image: "https://foundsf.org/images/thumb/1/1b/thumb/1/1b/Seward_Slides_San_Francisco.jpg/1280px-Seward_Slides_San_Francisco.jpg"
   },
   {
     id: "secret-tiled-staircase",
