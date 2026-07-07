@@ -93,7 +93,7 @@ window.EVENTS_DATA = [
     why: "Directly addresses the retention question. Small dinners bypass generic startup advice and focus on the lived value of staying. Prompt: 'At what point could you have left the Bay Area, and why didn't you?'",
     details: "Small, intimate dinners mixing current batch founders with successful YC alumni who explicitly chose to make San Francisco their permanent home.",
     link: "https://www.ycombinator.com",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/San_Francisco_intimate_dinner.jpg/1280px-San_Francisco_intimate_dinner.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/thumb/8/8e/San_Francisco_speakeasy_dinner.jpg/1280px-San_Francisco_speakeasy_dinner.jpg",
     partner: "Local culinary chefs, private speakeasy venues"
   },
   {
@@ -107,7 +107,7 @@ window.EVENTS_DATA = [
     why: "Combines active teamwork, friendly competition, water, skyline views, and a premium social winery setting. Highly memorable and difficult to replicate in any other global startup hub.",
     details: "Charter small sailboats for a guided, friendly regatta around Treasure Island, then dock for a private tasting session at a local urban winery with views of the Bay Bridge.",
     link: "https://www.treasureislandwinery.com",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/San_Francisco_Bay_sailboat_evening.jpg/1280px-San_Francisco_Bay_sailboat_evening.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/thumb/8/89/San_Francisco_Bay_regatta.jpg/1280px-San_Francisco_Bay_regatta.jpg",
     partner: "SF Bay Sailing Charters, Treasure Island Wines"
   },
   {
@@ -135,7 +135,7 @@ window.EVENTS_DATA = [
     why: "Creates a low-pressure, welcoming environment where founders can see that San Francisco is not just an accelerator location, but an active, ongoing, multigenerational community. Scalable and tradition-friendly.",
     details: "A large, casual, catered afternoon picnic in Golden Gate Park (near Hellman Hollow or Lindley Meadow) with current YC batches, alumni, investors, and local builders.",
     link: "https://sfrecpark.org/734/Golden-Gate-Park",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/thumb/5/5a/Hellman_Hollow_Golden_Gate_Park.jpg/1280px-Hellman_Hollow_Golden_Gate_Park.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Hellman_Hollow_Golden_Gate_Park.jpg/1280px-Hellman_Hollow_Golden_Gate_Park.jpg",
     partner: "Bi-Rite Catering, SF Rec & Parks"
   },
   {
@@ -205,7 +205,7 @@ window.EVENTS_DATA = [
     why: "Presents San Francisco as restorative and physically grounding, counteracting startup intensity. Teaches founders that world-class nature walks exist right in their backyard.",
     details: "A guided, silent forest-bathing walk through the Presidio's towering eucalyptus and redwood groves, ending with a catered gourmet picnic on the Main Parade Ground.",
     link: "https://www.presidio.gov",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/thumb/e/e1/Presidio_eucalyptus_forest.jpg/1280px-Presidio_eucalyptus_forest.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/1280px-Presidio_eucalyptus_forest.jpg",
     partner: "Presidio Trust, Association of Nature and Forest Therapy Guides"
   },
   {
@@ -219,7 +219,7 @@ window.EVENTS_DATA = [
     why: "Makes technical creativity feel playful and cooperative rather than work-like. Founders bond through active soldering and analog arcade gaming rather than pitching.",
     details: "A hands-on workshop in a SoMa maker space (e.g. soldering custom hardware badges) followed by free-play vintage pinball and arcade games at Musee Mecanique.",
     link: "https://museemecanique.com",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/thumb/3/37/Noisebridge_San_Francisco.jpg/1280px-Noisebridge_San_Francisco.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/1280px-Noisebridge_San_Francisco.jpg",
     partner: "Noisebridge SoMa, Musee Mecanique"
   },
   {
@@ -260,7 +260,7 @@ window.EVENTS_DATA = [
     why: "Pairs the raw, hands-on physical act of building with a highly communal, shared-platter Yemeni dinner. Breaks down formal networking barriers.",
     details: "Tour an active hardware prototyping laboratory in SoMa, followed by a shared communal feast at a local Yemeni restaurant like Mandi House.",
     link: "https://www.mandihousesf.com",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/thumb/5/5d/Middle_Eastern_restaurant_San_Francisco.jpg/1280px-Middle_Eastern_restaurant_San_Francisco.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Middle_Eastern_restaurant_San_Francisco.jpg/1280px-Middle_Eastern_restaurant_San_Francisco.jpg",
     partner: "Soma Prototyping Labs, Mandi House"
   },
   {
@@ -296,7 +296,7 @@ window.EVENTS_DATA = [
     retention: "Very High",
     why: "Demonstrates the intellectual density of the region without requiring pitches, panels, or investor theater. Guests share raw, interesting ideas directly.",
     details: "A curated evening salon where each guest has 3 minutes to share one deeply interesting thing they learned or built in the last six months.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/San_Francisco_dinner_party.jpg/1280px-San_Francisco_dinner_party.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/thumb/3/3f/San_Francisco_founder_dinner.jpg/1280px-San_Francisco_founder_dinner.jpg"
   },
   {
     id: "random-walk-dinners",
@@ -307,7 +307,7 @@ window.EVENTS_DATA = [
     retention: "High",
     why: "Many people fall in love with SF due to unexpected interdisciplinary conversations. This format manufactures high-quality serendipity outside the tech bubble.",
     details: "Small-group dinners matching YC founders with local SF scientists, designers, writers, artists, chefs, and product creators based on shared interests.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/San_Francisco_restaurant_group_dinner.jpg/1280px-San_Francisco_restaurant_group_dinner.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/thumb/8/8e/San_Francisco_dinner_conversation.jpg/1280px-San_Francisco_dinner_conversation.jpg"
   },
   {
     id: "lands-end-hike",
@@ -342,7 +342,7 @@ window.EVENTS_DATA = [
     why: "Logistically simple but emotionally powerful. Seeing the entire grid of the city light up or fade at dawn/dusk creates shared quiet reflection.",
     details: "A quick group drive or climb to the summit of Twin Peaks for coffee, pastries, and a panoramic reflection circle overlooking the city.",
     link: "https://sfrecpark.org/1218/Twin-Peaks",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/thumb/1/11/Twin_Peaks_sunset_San_Francisco.jpg/1280px-Twin_Peaks_sunset_San_Francisco.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/1280px-Twin_Peaks_sunset_San_Francisco.jpg"
   },
   {
     id: "mount-sutro-hidden-hike",
@@ -353,7 +353,7 @@ window.EVENTS_DATA = [
     retention: "Medium",
     why: "Gives founders the magical feeling of discovering a secret SF. A dense, misty eucalyptus forest hidden directly in the center of the city.",
     details: "Hike the historic interior trails of Mount Sutro, exploring the cloud forest and foggy peaks, feeling miles away from any urban core.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/thumb/6/6e/Mount_Sutro_trail_San_Francisco.jpg/1280px-Mount_Sutro_trail_San_Francisco.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Mount_Sutro_trail_San_Francisco.jpg/1280px-Mount_Sutro_trail_San_Francisco.jpg"
   },
   {
     id: "sunset-bay-sail",
@@ -386,7 +386,7 @@ window.EVENTS_DATA = [
     retention: "Medium",
     why: "An active, physical outdoor break from screens. Kayaking past houseboats and seals with city and bridge views provides high mental restoration.",
     details: "A guided paddleboarding and kayaking session in Richardson Bay, Sausalito, with close-up views of the waterfront and Mt. Tamalpais.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/thumb/9/9e/Richardson_Bay_kayak.jpg/1280px-Richardson_Bay_kayak.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Richardson_Bay_kayak.jpg/1280px-Richardson_Bay_kayak.jpg"
   },
   {
     id: "japantown-food-immersion",
@@ -432,7 +432,7 @@ window.EVENTS_DATA = [
     retention: "Medium",
     why: "Shows that San Francisco has long been a global magnet for creatives, weirdos, and people experimenting with radical new ways to live and work.",
     details: "A historical walking tour exploring the 1960s musical, artistic, and countercultural legacy of the Haight-Ashbury neighborhood.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/thumb/6/60/Haight_Street_San_Francisco.jpg/1280px-Haight_Street_San_Francisco.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/1280px-Haight_Street_San_Francisco.jpg"
   },
   {
     id: "seward-street-slides",
@@ -553,7 +553,7 @@ window.EVENTS_DATA = [
     retention: "Extremely High",
     why: "A powerful capstone experience because it directly connects personal lifestyle design, housing choices, routines, and community with the decision to stay.",
     details: "A structured, small-group workshop where founders choose from nature, food, neighborhoods, and wellness options to map out their future life in the Bay Area.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/San_Francisco_workshop_discussion.jpg/1280px-San_Francisco_workshop_discussion.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/thumb/3/3f/San_Francisco_idea_session.jpg/1280px-San_Francisco_idea_session.jpg"
   },
   {
     id: "bay-area-passport",
