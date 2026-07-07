@@ -135,7 +135,7 @@ window.EVENTS_DATA = [
     why: "Creates a low-pressure, welcoming environment where founders can see that San Francisco is not just an accelerator location, but an active, ongoing, multigenerational community. Scalable and tradition-friendly.",
     details: "A large, casual, catered afternoon picnic in Golden Gate Park (near Hellman Hollow or Lindley Meadow) with current YC batches, alumni, investors, and local builders.",
     link: "https://sfrecpark.org/734/Golden-Gate-Park",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Golden_Gate_Park_lawn_San_Francisco.jpg/1280px-Golden_Gate_Park_lawn_San_Francisco.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/thumb/5/5a/Hellman_Hollow_Golden_Gate_Park.jpg/1280px-Hellman_Hollow_Golden_Gate_Park.jpg",
     partner: "Bi-Rite Catering, SF Rec & Parks"
   },
   {
@@ -205,7 +205,7 @@ window.EVENTS_DATA = [
     why: "Presents San Francisco as restorative and physically grounding, counteracting startup intensity. Teaches founders that world-class nature walks exist right in their backyard.",
     details: "A guided, silent forest-bathing walk through the Presidio's towering eucalyptus and redwood groves, ending with a catered gourmet picnic on the Main Parade Ground.",
     link: "https://www.presidio.gov",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Presidio_forest_San_Francisco.jpg/1280px-Presidio_forest_San_Francisco.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/thumb/e/e1/Presidio_eucalyptus_forest.jpg/1280px-Presidio_eucalyptus_forest.jpg",
     partner: "Presidio Trust, Association of Nature and Forest Therapy Guides"
   },
   {
@@ -219,7 +219,7 @@ window.EVENTS_DATA = [
     why: "Makes technical creativity feel playful and cooperative rather than work-like. Founders bond through active soldering and analog arcade gaming rather than pitching.",
     details: "A hands-on workshop in a SoMa maker space (e.g. soldering custom hardware badges) followed by free-play vintage pinball and arcade games at Musee Mecanique.",
     link: "https://museemecanique.com",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Makerspace_in_the_Making.jpg/1280px-Makerspace_in_the_Making.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/thumb/3/37/Noisebridge_San_Francisco.jpg/1280px-Noisebridge_San_Francisco.jpg",
     partner: "Noisebridge SoMa, Musee Mecanique"
   },
   {
@@ -260,7 +260,7 @@ window.EVENTS_DATA = [
     why: "Pairs the raw, hands-on physical act of building with a highly communal, shared-platter Yemeni dinner. Breaks down formal networking barriers.",
     details: "Tour an active hardware prototyping laboratory in SoMa, followed by a shared communal feast at a local Yemeni restaurant like Mandi House.",
     link: "https://www.mandihousesf.com",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Yemeni_restaurant_San_Francisco.jpg/1280px-Yemeni_restaurant_San_Francisco.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/thumb/5/5d/Middle_Eastern_restaurant_San_Francisco.jpg/1280px-Middle_Eastern_restaurant_San_Francisco.jpg",
     partner: "Soma Prototyping Labs, Mandi House"
   },
   {
@@ -342,7 +342,7 @@ window.EVENTS_DATA = [
     why: "Logistically simple but emotionally powerful. Seeing the entire grid of the city light up or fade at dawn/dusk creates shared quiet reflection.",
     details: "A quick group drive or climb to the summit of Twin Peaks for coffee, pastries, and a panoramic reflection circle overlooking the city.",
     link: "https://sfrecpark.org/1218/Twin-Peaks",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Twin_Peaks_view_San_Francisco.jpg/1280px-Twin_Peaks_view_San_Francisco.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/thumb/1/11/Twin_Peaks_sunset_San_Francisco.jpg/1280px-Twin_Peaks_sunset_San_Francisco.jpg"
   },
   {
     id: "mount-sutro-hidden-hike",
@@ -353,7 +353,7 @@ window.EVENTS_DATA = [
     retention: "Medium",
     why: "Gives founders the magical feeling of discovering a secret SF. A dense, misty eucalyptus forest hidden directly in the center of the city.",
     details: "Hike the historic interior trails of Mount Sutro, exploring the cloud forest and foggy peaks, feeling miles away from any urban core.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Mount_Sutro_forest_San_Francisco.jpg/1280px-Mount_Sutro_forest_San_Francisco.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/thumb/6/6e/Mount_Sutro_trail_San_Francisco.jpg/1280px-Mount_Sutro_trail_San_Francisco.jpg"
   },
   {
     id: "sunset-bay-sail",
@@ -386,7 +386,7 @@ window.EVENTS_DATA = [
     retention: "Medium",
     why: "An active, physical outdoor break from screens. Kayaking past houseboats and seals with city and bridge views provides high mental restoration.",
     details: "A guided paddleboarding and kayaking session in Richardson Bay, Sausalito, with close-up views of the waterfront and Mt. Tamalpais.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Richardson_Bay_Sausalito.jpg/1280px-Richardson_Bay_Sausalito.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/thumb/9/9e/Richardson_Bay_kayak.jpg/1280px-Richardson_Bay_kayak.jpg"
   },
   {
     id: "japantown-food-immersion",
@@ -432,7 +432,7 @@ window.EVENTS_DATA = [
     retention: "Medium",
     why: "Shows that San Francisco has long been a global magnet for creatives, weirdos, and people experimenting with radical new ways to live and work.",
     details: "A historical walking tour exploring the 1960s musical, artistic, and countercultural legacy of the Haight-Ashbury neighborhood.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Haight_Ashbury_street_San_Francisco.jpg/1280px-Haight_Ashbury_street_San_Francisco.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/thumb/6/60/Haight_Street_San_Francisco.jpg/1280px-Haight_Street_San_Francisco.jpg"
   },
   {
     id: "seward-street-slides",
