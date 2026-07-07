@@ -574,7 +574,7 @@ const EVENT_CATALOG = [
     commitment: "Medium",
     priority: 28,
     ycOnly: false,
-    image: "./SF-founder-event-images/artist-studio-hop/01-Minnesota-Street-Project-gallery-opening-with-large-scale-media-work.jpg",
+    image: "./SF-founder-event-images/artist-studio-hop/minnesota-street-project-atrium-san-francisco.jpg",
     org: "Minnesota Street Project",
     url: "https://minnesotastreetproject.com/",
     partnerPath: "Gallery/studio host, artist talk, wine/NA drinks, dinner nearby",

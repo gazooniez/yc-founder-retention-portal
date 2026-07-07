@@ -617,7 +617,7 @@ window.EVENT_GALLERIES = {
   ],
   "artist-studio-hop": [
     {
-      "url": "./SF-founder-event-images/artist-studio-hop/01-Minnesota-Street-Project-gallery-opening-with-large-scale-media-work.jpg",
+      "url": "./SF-founder-event-images/artist-studio-hop/minnesota-street-project-atrium-san-francisco.jpg",
       "caption": "Minnesota Street Project gallery opening with large-scale media work",
       "source": "Flickr / r00s",
     },
