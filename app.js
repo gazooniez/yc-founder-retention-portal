@@ -374,7 +374,7 @@ const EVENT_CATALOG = [
     commitment: "Medium",
     priority: 19,
     ycOnly: false,
-    image: "./SF-founder-event-images/ocean-beach-fire/01-Aerial-Ocean-Beach-view-with-the-shoreline-and-surf.webp",
+    image: "./SF-founder-event-images/ocean-beach-fire/02-Ocean-Beach-fire-pits-at-sunset.webp",
     org: "Golden Gate National Recreation Area",
     url: "https://www.nps.gov/goga/planyourvisit/ocean-beach.htm",
     partnerPath: "Fire pit rules, blankets, s'mores, Outer Sunset food partner",
