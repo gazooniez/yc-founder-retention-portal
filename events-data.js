@@ -93,7 +93,7 @@ window.EVENTS_DATA = [
     why: "Directly addresses the retention question. Small dinners bypass generic startup advice and focus on the lived value of staying. Prompt: 'At what point could you have left the Bay Area, and why didn't you?'",
     details: "Small, intimate dinners mixing current batch founders with successful YC alumni who explicitly chose to make San Francisco their permanent home.",
     link: "https://www.ycombinator.com",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/San_Francisco_restaurant_interior.jpg/1280px-San_Francisco_restaurant_interior.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/thumb/8/8e/San_Francisco_speakeasy_bar.jpg/1280px-San_Francisco_speakeasy_bar.jpg",
     partner: "Local culinary chefs, private speakeasy venues"
   },
   {
@@ -107,7 +107,7 @@ window.EVENTS_DATA = [
     why: "Combines active teamwork, friendly competition, water, skyline views, and a premium social winery setting. Highly memorable and difficult to replicate in any other global startup hub.",
     details: "Charter small sailboats for a guided, friendly regatta around Treasure Island, then dock for a private tasting session at a local urban winery with views of the Bay Bridge.",
     link: "https://www.treasureislandwinery.com",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Sailboat_on_San_Francisco_Bay_at_sunset.jpg/1280px-Sailboat_on_San_Francisco_Bay_at_sunset.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/thumb/8/89/Sailing_on_San_Francisco_Bay.jpg/1280px-Sailing_on_San_Francisco_Bay.jpg",
     partner: "SF Bay Sailing Charters, Treasure Island Wines"
   },
   {
@@ -307,7 +307,7 @@ window.EVENTS_DATA = [
     retention: "High",
     why: "Many people fall in love with SF due to unexpected interdisciplinary conversations. This format manufactures high-quality serendipity outside the tech bubble.",
     details: "Small-group dinners matching YC founders with local SF scientists, designers, writers, artists, chefs, and product creators based on shared interests.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/San_Francisco_restaurant_interior.jpg/1280px-San_Francisco_restaurant_interior.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/thumb/8/8e/San_Francisco_speakeasy_bar.jpg/1280px-San_Francisco_speakeasy_bar.jpg"
   },
   {
     id: "lands-end-hike",
@@ -364,7 +364,7 @@ window.EVENTS_DATA = [
     retention: "High",
     why: "Premium, intimate, and uniquely local. Navigating the Bay under sails with views of Alcatraz and the Golden Gate at dusk is unforgettable.",
     details: "Charter a premium catamaran or sailboat for a sunset cruise on the SF Bay, complete with wine, local cheese, and city lights.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Sailboat_on_San_Francisco_Bay_at_sunset.jpg/1280px-Sailboat_on_San_Francisco_Bay_at_sunset.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/thumb/8/89/Sailing_on_San_Francisco_Bay.jpg/1280px-Sailing_on_San_Francisco_Bay.jpg"
   },
   {
     id: "gg-bridge-bike-ride",
@@ -375,7 +375,7 @@ window.EVENTS_DATA = [
     retention: "High",
     why: "Active and iconic. Navigating the bridge on bikes, exploring Sausalito, and returning via public ferry reframes public transit as an adventure.",
     details: "Rent bikes in the Marina, cycle across the Golden Gate Bridge to Sausalito, explore the houseboats, and return via the Sausalito Ferry.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Golden_Gate_Bridge_from_Sausalito.jpg/1280px-Golden_Gate_Bridge_from_Sausalito.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/thumb/3/3f/Golden_Gate_Bridge_bike_path.jpg/1280px-Golden_Gate_Bridge_bike_path.jpg"
   },
   {
     id: "kayak-richardson-bay",
